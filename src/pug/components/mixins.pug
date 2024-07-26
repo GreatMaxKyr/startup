@@ -1,0 +1,13 @@
+-
+    let menu = [
+        {name:"", url:"#"},
+    ]
+
+mixin navigmenu (items, navclass, hambclass)
+    nav(class=navclass)
+        ul
+            for item in items
+                li 
+                    a(aria-current="page" href=item.url) #{item.name}
+    .hamburger(class=hambclass)
+        span  

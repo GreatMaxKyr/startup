@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        title Startup
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scalable=1.0, maximum-scale=2.0, user-scalable=yes")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet")
+        link(rel="stylesheet", href="css/styles.css")
+        include components/mixins
+    body 
+    
+        header
+            include components/header
+        main
+            include components/main
+        footer
+            include components/footer
+
+        script(src="js/script.js")

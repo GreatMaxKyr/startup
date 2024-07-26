@@ -1,0 +1,301 @@
+=media ($size)
+    @media screen and (min-width: #{$size}px)
+        @content
+
+body
+    color: #555
+    font-family: "Montserrat", sans-serif
+    line-height: 24px
+    text-align: center
+
+.HeaderLinks 
+    position: fixed
+    display: flex
+    color: #fff
+
+.ImageContainerHeader
+    background-image: url(../img/RedWall.png)
+    background-color: #ddd
+    background-position: center
+    background-size: cover
+    color: #fff
+    padding: 550px 15px 525px
+
+    h1
+        font-size: 76px
+    
+    p
+        padding: 30px 0 95px
+        font-size: 30px
+
+.CoolA
+    text-decoration: none
+    padding: 22px 50px
+    font-size: 25px
+    border: 2px solid #fff
+    color: #fff
+    text-transform: uppercase
+
+h3
+    font-size: 30px
+    text-transform: uppercase
+    font-weight: 800
+    text-align: center
+    position: relative
+    margin-bottom: 80px
+    margin-top: 0
+
+    &::before
+        content: ""
+        z-index: 4
+        background-color: #555
+        position: absolute
+        width: 70px
+        height: 3px
+        top: 70px
+        left: 50%
+        transform: translateX(-35px)
+
+.UnderH
+    font-family: "Roboto Slab"
+    font-size: 26px
+
+.ServicesBlock
+    padding: 100px 0 50px
+
+    .ServiceCards
+        padding: 100px 285px
+
+        .card
+            border: none
+
+            .IconFrame 
+                width: 140px
+                height: 140px
+                border-radius: 50%
+                border: 1px solid #ccc
+                margin-left: 50%
+                transform: translateX(-70px)
+
+            .filledFrame
+                background-color: #c0301c
+                background-image: url(../img/fa-font.png)
+
+            .SolidIcon
+                background-image: url(../img/fa-code.png)
+
+            .SupportIcon
+                background-image: url(../img/fa-support.png)
+
+            .card-body
+                font-family: "Roboto Slab"
+                text-align: center
+                margin: 0 25px
+                color: #555
+
+                h5
+                    font-family: "Montserrat", sans-serif
+                    font-weight: 500
+                    padding: 25px 0
+                    font-size: 25px
+                    text-transform: uppercase
+
+                p
+                    font-size: 25px
+
+.AboutUsBlock
+    background-color: #f8f8f8  
+    padding: 150px 290px 
+
+    .AboutParagraphs
+        padding: 50px 40px
+        font-family: "Roboto Slab"
+
+        p
+            padding-top: 40px
+            font-size: 25px
+
+        p:first-child
+            margin-right: 50px
+        p:nth-child(2)
+            margin-left: 50px
+
+    .AboutPhotos
+        padding: 90px 80px
+        text-align: center
+
+        div
+            width: 420px
+            height: 400px
+            margin-bottom: 20px
+
+            div
+                background-color: #ddd
+
+
+.works
+    padding: 140px 
+    margin: 0 auto
+
+    .WorkLinks
+
+        a
+            text-decoration: none
+            color: #555
+            padding: 15px
+            
+            &:hover
+                color: #c0301c
+        
+    .WorkPicturesBlock
+        margin-top: 100px
+        display: flex
+        flex-wrap: wrap
+        width: 1875px
+
+        .WorkPictures
+            background-color: #ddd
+            width: 575px
+            height: 500px
+            margin: 25px
+
+.GetInTouch
+    padding: 160px 0 175px
+    text-align: center
+    background-image: url(../img/TalkPic.png)
+    background-size: cover 
+    background-color: #ddd
+    color: #fff
+    font-family: "Roboto Slab"
+
+    p
+        font-size: 50px
+        padding: 10px 10px 25px
+    
+    .PAMargin
+        margin-bottom: 90px
+
+.BlogPosts
+    padding: 150px 380px 150px
+
+    .PostsBlock
+        padding-top: 100px
+
+        .FirstPost
+            padding-bottom: 55px
+            border-bottom: 1px solid #ddd
+            margin-bottom: 65px
+
+        .posts
+            display: flex
+
+            .BlockRight
+             width: 40% 
+             background-color: #ddd
+
+            .BlockLeft
+                text-align: left
+                width: 60%
+                padding-bottom: 110px
+                padding-left: 60px
+
+                .BlogBlock
+
+                    h5
+                        width: 120px
+                        display: inline-block
+                        padding: 15px 0
+                        border: 2px solid #000
+                        font-size: 35px
+                        letter-spacing: 2px
+                        text-transform: uppercase
+                        color: #777
+                        text-align: center
+
+                    div
+                        display: inline-block
+                        margin-left: 50px
+
+                        p
+                            font-style: italic
+                            padding-top: 10px
+                
+                .BlogBlockText
+                    font-family: "Roboto Slab"
+
+                    p
+                        font-size: 25px
+                        padding: 30px 0 70px
+                        color: #555
+
+                    a
+                        font-size: 20px
+                        text-decoration: none
+                        color: #777
+                        font-weight: 800
+
+        .posts:hover
+            .BlogBlock
+                p,h4
+                    color: #c0301c
+            .BlogBlockText
+                a
+                    color: #c0301c
+                    text-decoration: underline
+
+    
+.Partners
+    padding: 170px 0
+    background-color: #f8f8f8
+    
+    div
+        width: 55%
+        margin: 0 auto
+
+    .Partners-text
+        padding: 100px 70px 0
+
+    img
+        width: 200px
+        height: 60px
+        background-color: #ddd
+
+    p
+        font-size: 25px
+        color: #555
+        font-weight: 400
+        line-height: 50px
+        font-family: "Roboto Slab"
+        font-style: italic
+        text-align: center
+
+    .partner-name
+        margin: 40px 0 50px
+        font-size: 30px
+        font-style: normal
+
+    .dots
+        width: 100px
+
+        .dot-selection
+            width: 20px
+            height: 20px
+            border-radius: 50%
+            background-color: #ddd
+
+            &:hover
+                background-color: #c0301c
+
+.Touch
+    padding: 170px 0  
+            
+.footer
+    padding: 150px 0
+    background-color: #c0301c
+    text-align: center
+    color: #fff
+    font-family: "Roboto Slab"
+
+    h3
+        &::before
+            background-color: #fff
