@@ -1,13 +1,24 @@
 -
     let menu = [
-        {name:"", url:"#"},
+        {name:"Home", url:"#"},
+        {name:"Services", url:"#"},
+        {name:"About", url:"#"},
+        {name:"Works", url:"#"},
+        {name:"Bog", url:"#"},
+        {name:"Clients", url:"#"},
+        {name:"Contact", url:"#"}
     ]
 
 mixin navigmenu (items, navclass, hambclass)
     nav(class=navclass)
-        ul
-            for item in items
-                li 
-                    a(aria-current="page" href=item.url) #{item.name}
+        for item in items
+            a.HeaderLinksA(aria-current="page" href=item.url) #{item.name}
     .hamburger(class=hambclass)
         span  
+
+    
+mixin PeopleSocials ()
+    a.AboutPhotosSocials-BTN.facebook(href="#") 
+    a.AboutPhotosSocials-BTN.instagram(href="#") 
+    a.AboutPhotosSocials-BTN.linkedIn(href="#") 
+    a.AboutPhotosSocials-BTN.twitter(href="#") 

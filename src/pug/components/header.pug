@@ -1,15 +1,18 @@
-container 
+.div 
     .HeaderLinks
-        h2 Startup 
-        .HeaderLinksMenu
-            a(href="#") Home
-            a(href="#") Services 
-            a(href="#") About 
-            a(href="#") Works
-            a(href="#") Blog
-            a(href="#") Clients
-            a(href="#") Contact
+        h2(style="vertical-align: middle") Startup 
+        +navigmenu(menu,"HeaderLinksMenu","hamburger")
     .ImageContainerHeader 
         h1.text-uppercase welcome to startup
         p Your Favourite Creative Agency Template
-        a.CoolA.text-uppercase(href="#") Get started
+        button.GetStarteda.CoolA.text-uppercase(href="#") Get started
+        .popup 
+            .popup-content
+                span.close &times;
+                .popup-inputs
+                    input.EnterName(type="text", name="" placeholder="Enter your name")
+                    input(type="password", name="" placeholder="Enter your password")
+                .bar 
+                    .circle(draggable="true")
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#000" width="40" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
+                

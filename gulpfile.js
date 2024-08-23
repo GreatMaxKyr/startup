@@ -1,4 +1,4 @@
-import browserSync, { stream } from "browser-sync"
+import browserSync from "browser-sync"
 import gulp from "gulp"
 import del from "del"
 import pug from "gulp-pug"

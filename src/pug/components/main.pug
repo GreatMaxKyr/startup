@@ -24,55 +24,99 @@
         p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
         p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
     .AboutPhotos.d-flex.justify-content-between 
-        div
+        .AboutPhotosPeopleBlocks
             div
-                img(src="../img/", alt="")
+                img(src="img/person1.png", alt="")
+                .AboutPhotosSocialBlock
+                    +PeopleSocials()
             h4 Md. Khalil Uddin
             p Head of Ideas
-        div 
+        .AboutPhotosPeopleBlocks
             div
-                img(src="../img/", alt="")
+                img(src="img/person2.png", alt="")
+                .AboutPhotosSocialBlock
+                    +PeopleSocials()
             h4 Rubel Miah
             p Lead WordPress Developer
-        div 
-            div 
-                img(src="../img/", alt="")
+        .AboutPhotosPeopleBlocks
+            div
+                img(src="img/person3.png", alt="")
+                .AboutPhotosSocialBlock
+                    +PeopleSocials()
             h4 Shamim Mia
             p Sr. Web Developer
-        div 
-            div 
-                img(src="../img/", alt="")
+        .AboutPhotosPeopleBlocks
+            div
+                img(src="img/person4.png", alt="")
+                .AboutPhotosSocialBlock
+                    +PeopleSocials()
             h4 John Doe
             p Front-end Developer
 .works 
     h3 Latest Works
-    .WorkLinks.UnderH
+    .WorkLinks.UnderH.pb-5
         a(href="#") All 
         a(href="#") Branding 
         a(href="#") Design 
         a(href="#") Development 
         a(href="#") Strategy
-    .WorkPicturesBlock
-        img.WorkPictures(src="WorksHair.png" alt="Work Picture 1")
-        img.WorkPictures(src="WorksBird.png" alt="Work Picture 2")
-        img.WorkPictures(src="WorksLaptop.png" alt="Work Picture 3")
-        img.WorkPictures(src="WorksCamera.png" alt="Work Picture 4")
-        img.WorkPictures(src="WorksBike.png" alt="Work Picture 5")
-        img.WorkPictures(src="WorksNoteBook.png" alt="Work Picture 6")
-        img.WorkPictures(src="WorksLaptopWorkSpace.png" alt="Work Picture 7")
-        img.WorkPictures(src="WorksWorkSpace.png" alt="Work Picture 8")
-        img.WorkPictures(src="WorksBook.png" alt="Work Picture 9")
+    .WorkPicturesBlock.mt-5
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksHair.png" alt="Work Picture 1")
+                .middle
+                    p Hair Dresser
+                    a.text-uppercase.WorkLink(href="#") View >  
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksBird.png" alt="Work Picture 2")
+                .middle
+                    p Peace
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksLaptop.png" alt="Work Picture 3")
+                .middle
+                    p Gadgets
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksCamera.png" alt="Work Picture 4")
+                .middle
+                    p Photo Camera
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksBike.png" alt="Work Picture 5")
+                .middle
+                    p Bicycle
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksNoteBook.png" alt="Work Picture 6")
+                .middle
+                    p Notes
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksLaptopWorkSpace.png" alt="Work Picture 7")
+                .middle
+                    p Table
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksWorkSpace.png" alt="Work Picture 8")
+                .middle
+                    p Stuff
+                    a.text-uppercase.WorkLink(href="#") View >
+            .WorkPicturesContainer
+                img.WorkPictures(src="img/WorksBook.png" alt="Work Picture 9")
+                .middle
+                    p Events
+                    a.text-uppercase.WorkLink(href="#") View >
 .GetInTouch 
     p Do you like OUR Work so far?
     p.PAMargin Let's talk about YOUR PROJECTS
-    a.CoolA(href="#") Get In touch
+    button.CoolA.DoYouGetInTouch(href="#") Get In touch
 .BlogPosts
     h3 our recent blog posts
     p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
     .PostsBlock
         .posts.FirstPost
             .BlockRight 
-                img(src="BlogsTable", alt="blogs")
+                img(src="img/BlogsTable.png", alt="blogs")
             .BlockLeft
                 div.BlogBlock.flex.flex-row
                     h5 18 oct
@@ -84,7 +128,7 @@
                     a.text-uppercase(href="#") Read more         
         .posts.BlockLeft
             .BlockRight 
-                img(src="WorksWorkSpace.png", alt="blogs")
+                img(src="img/WorksWorkSpace.png", alt="blogs")
             .BlockLeft
                 div.BlogBlock.flex.flex-row
                     h5 18 oct
@@ -96,11 +140,11 @@
                     a.text-uppercase(href="#") Read more         
 .Partners 
     div.d-flex.Partners-images.justify-content-between
-        img(src="deorham.png", alt="partners")
-        img(src="ratings.png", alt="partners")
-        img(src="malkmedia.png", alt="partners")
-        img(src="bcause.png", alt="partners")
-        img(src="wompify.png", alt="partners")
+        img(src="img/deorham.png", alt="partners")
+        img(src="img/ratings.png", alt="partners")
+        img(src="img/malkmedia.png", alt="partners")
+        img(src="img/bcause.png", alt="partners")
+        img(src="img/wompify.png", alt="partners")
     div.Partners-text
         p Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
         p.partner-name John Doe, Google Inc.
@@ -111,27 +155,28 @@
 .Touch 
     h3 Get in touch
     p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-    .container.d-flex
+    .TouchBlock
         .PersonalInfoBlock 
             .Adress
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                <svg style="vertical-align: middle" xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
                 p.text-uppercase Adress
-                p 312, 7th Ave New York 
-                p NY 101200, United States Of America
+                a 312, 7th Ave New York 
+                a NY 101200, United States Of America
             .Phone
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0L304 0c35.3 0 64 28.7 64 64l0 384c0 35.3-28.7 64-64 64L80 512c-35.3 0-64-28.7-64-64L16 64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64L80 64l0 320 224 0 0-320z"/></svg>
+                <svg style="vertical-align: middle" xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0L304 0c35.3 0 64 28.7 64 64l0 384c0 35.3-28.7 64-64 64L80 512c-35.3 0-64-28.7-64-64L16 64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64L80 64l0 320 224 0 0-320z"/></svg>
                 p.text-uppercase Hotline(24/7)
                 a(href="tel:650052300") +65 0052 300
                 a(href="tel:8801723511210") +88 01723 511 340
             .Email
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                <svg style="vertical-align: middle" xmlns="http://www.w3.org/2000/svg" width="30px" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
                 p.text-uppercase E-mail
                 a(href="mailto:shapedtheme@gmail.com") shapedtheme@gmail.com
                 a(href="mailto:khalilkode@gmail.com") khalilkode@gmail.com
         .InputsBlock
-            input.w-40.text-uppercase(type="text", placeholder="your name") 
-            input.w-40.text-uppercase(type="email", placeholder="your e-mail")
-            input.w-40.text-uppercase(type="text", placeholder="your subject") 
-            input.w-40.text-uppercase(type="text", placeholder="company name") 
-            input.text-uppercase(type="text", placeholder="write your message") 
-            input(type="submit" placeholder="send your message").text-uppercase
+            input(type="text", placeholder="your name") 
+            input(type="email", placeholder="your e-mail")
+            input(type="text", placeholder="your subject") 
+            input(type="text", placeholder="company name") 
+            textarea(rows="5", placeholder="write your message") 
+            input.SendMessage(type="submit" value="send message")
+            span *We'll reply as soon as possible. We dont reply on Mondays.
