@@ -8,13 +8,14 @@ window.addEventListener('wheel', function(event) {
     let scrollTop = window.scrollY
     let ScrolDY = event.deltaY
 
+    header.classList.remove("reveal")
+
     if (ScrolDY < 0) {
         headerLinks.style.marginTop = '0'
     } else {
         headerLinks.style.marginTop = '-200px'
     }
     
-    // if (scrollTop > lastScrollTop) {
     if (scrollTop < headerBlockHeight) {
         headerLinks.style.backgroundColor = 'rgba(192, 48, 28, 0)'
     } else {
@@ -26,5 +27,4 @@ window.addEventListener('wheel', function(event) {
     }
 
     lastScrollTop = scrollTop
-    console.log(event.deltaY)
 })

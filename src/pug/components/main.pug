@@ -5,17 +5,17 @@
         .card
             .IconFrame.filledFrame
             .card-body
-                h5 Clean Typography
+                h5.ServiceH Clean Typography
                 p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
         .card
             .IconFrame.SolidIcon
             .card-body 
-                h5 Rock Solid Code
+                h5.ServiceH.HackTrigger Rock Solid Code
                 p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
         .card
             .IconFrame.SupportIcon
             .card-body
-                h5 Expert Support
+                h5.ServiceH Expert Support
                 p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
 .AboutUsBlock 
     h3 About us
@@ -125,7 +125,8 @@
                         p By Khalil Uddin in Development 
                 div.BlogBlockText
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
-                    a.text-uppercase(href="#") Read more         
+                    a.PostReadMore.text-uppercase(href="#") Read more   
+
         .posts.BlockLeft
             .BlockRight 
                 img(src="img/WorksWorkSpace.png", alt="blogs")
@@ -137,7 +138,7 @@
                         p By Khalil Uddin in Development 
                 div.BlogBlockText
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
-                    a.text-uppercase(href="#") Read more         
+                    a.text-uppercase.PostReadMore(href="#") Read more         
 .Partners 
     div.d-flex.Partners-images.justify-content-between
         img(src="img/deorham.png", alt="partners")
@@ -173,10 +174,14 @@
                 a(href="mailto:shapedtheme@gmail.com") shapedtheme@gmail.com
                 a(href="mailto:khalilkode@gmail.com") khalilkode@gmail.com
         .InputsBlock
-            input(type="text", placeholder="your name") 
-            input(type="email", placeholder="your e-mail")
-            input(type="text", placeholder="your subject") 
-            input(type="text", placeholder="company name") 
-            textarea(rows="5", placeholder="write your message") 
+            input(name="name", type="text", placeholder="your name") 
+            input(name="e-mail", type="email", placeholder="your e-mail")
+            input(name="subject", type="text", placeholder="your subject") 
+            input(name="company", type="text", placeholder="company name") 
+            textarea.InputsTextarea(name="message", rows="5", placeholder="write your message") 
             input.SendMessage(type="submit" value="send message")
+            .popup.InputPopup
+                .popup-content
+                    span.InputClose &times;
+                    
             span *We'll reply as soon as possible. We dont reply on Mondays.
