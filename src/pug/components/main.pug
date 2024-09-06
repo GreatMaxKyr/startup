@@ -29,28 +29,28 @@
                 img(src="img/person1.png", alt="")
                 .AboutPhotosSocialBlock
                     +PeopleSocials()
-            h4 Md. Khalil Uddin
-            p Head of Ideas
+            h4.pt-5 Md. Khalil Uddin
+            p Head of Ideas   
         .AboutPhotosPeopleBlocks
             div
                 img(src="img/person2.png", alt="")
                 .AboutPhotosSocialBlock
                     +PeopleSocials()
-            h4 Rubel Miah
+            h4.pt-5 Rubel Miah
             p Lead WordPress Developer
         .AboutPhotosPeopleBlocks
             div
                 img(src="img/person3.png", alt="")
                 .AboutPhotosSocialBlock
                     +PeopleSocials()
-            h4 Shamim Mia
+            h4.pt-5 Shamim Mia
             p Sr. Web Developer
         .AboutPhotosPeopleBlocks
             div
                 img(src="img/person4.png", alt="")
                 .AboutPhotosSocialBlock
                     +PeopleSocials()
-            h4 John Doe
+            h4.pt-5 John Doe
             p Front-end Developer
 .works 
     h3 Latest Works
@@ -118,7 +118,7 @@
             .BlockRight 
                 img(src="img/BlogsTable.png", alt="blogs")
             .BlockLeft
-                div.BlogBlock.flex.flex-row
+                div.BlogBlock.d-flex.flex-row
                     h5 18 oct
                     div
                         h4.text-uppercase startup needs to be funded
@@ -131,7 +131,7 @@
             .BlockRight 
                 img(src="img/WorksWorkSpace.png", alt="blogs")
             .BlockLeft
-                div.BlogBlock.flex.flex-row
+                div.BlogBlock.d-flex.flex-row
                     h5 18 oct
                     div
                         h4.text-uppercase user interface designing elements
@@ -179,12 +179,13 @@
             input(name="subject", type="text", placeholder="your subject") 
             input(name="company", type="text", placeholder="company name") 
             textarea.InputsTextarea(name="message", rows="5", placeholder="write your message") 
-            input.SendMessage(type="submit" value="send message")
-            .popup.InputPopup
-                .popup-content
-                    span.InputClose &times;
-                    h3 confirm information
-                    p.underH please make sure that information below is correct 
-                    .ConfirmBlock 
-                    button <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/><path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>
-            span *We'll reply as soon as possible. We dont reply on Mondays.
+            .SendMessageBlock.d-flex
+                input.SendMessage(type="submit" value="send message")
+                .popup.InputPopup
+                    .popup-content
+                        span.InputClose &times;
+                        h3 confirm information
+                        p.underH please make sure that information below is correct 
+                        .ConfirmBlock 
+                        button <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/><path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/></svg>
+                span *We'll reply as soon as possible. We dont reply on Mondays.
