@@ -1,8 +1,8 @@
 let SendMessage = document.querySelector(".SendMessage")
 let InputsTextarea = document.querySelector(".InputsTextarea")
 let inputsFeed = document.querySelectorAll(".InputsBlock input")
-let InputPopup = document.querySelectorAll(".InputPopup")
-let InputClose = document.querySelectorAll(".InputClose")
+let InputPopup = document.querySelector(".InputPopup")
+let InputClose = document.querySelector(".InputClose")
 
 inputsFeed.forEach(input => {
     if (localStorage.getItem(input.name) != null) {
@@ -19,10 +19,12 @@ SendMessage.onclick = () => {
         }
         localStorage.setItem(InputsTextarea.name, InputsTextarea.value)
     });
-    InputPopup.style.display = "block"
+    InputPopup.style.display = 'block'
     body.style.overflowY = 'hidden'
+    InputPopup.style.backdropFilter = 'blur(5px)'
 }
 
 InputClose.onclick = () => {
-    InputPopup.style.display = "none"
+    InputPopup.style.display = 'none'
+    body.style.overflowY = 'auto'
 }

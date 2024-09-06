@@ -1,3 +1,6 @@
+let body = document.querySelector("body")
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll("div, p, img, section")
 

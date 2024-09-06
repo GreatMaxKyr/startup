@@ -14,8 +14,10 @@ let corX, corY
 GetStarteda.onclick = () => {
     popup.style.display = 'block'
     body.style.overflowY = 'hidden'
+    popup.style.backdropFilter = 'blur(5px)'
     TgMax = circle.getBoundingClientRect().left + bar.getBoundingClientRect().width
     TgMin = TgMax - 45
+    scrollTo(0,0)
 }
 
 circle.onmousedown = function(e) {
@@ -57,8 +59,8 @@ circle.onmousedown = function(e) {
   
   closeBtn.onclick = () => {
     popup.style.display = "none"
-    document.body.style.overflowY = 'auto'
-    document.body.style.filter = 'blur(10px)'
+    body.style.overflowY = 'auto'
+    
   }
   
   setTimeout(() => {
