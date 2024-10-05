@@ -10,8 +10,6 @@
 body
     color: #555
     font-family: "Montserrat", sans-serif
-    line-height: 24px
-    
 
 .reveal
   opacity: 0
@@ -38,12 +36,14 @@ body
     border: 1px solid #888
     background-color: rgba(238, 238, 238, 0.98)
     margin: auto
-    padding: 40px
     width: 80%
     max-width: 700px
     min-height: 450px
     border-radius: 20px
     text-align: center
+    padding: 0
+    +media(760)
+        padding: 40px
 
     &:nth-child(2)
         margin-top: 100px
@@ -59,20 +59,21 @@ body
     margin: 15px
     padding: 20px 40px
     border-radius: 25px
-    font-size: 20px
+    font-size: 1.25rem
     font-weight: 700
+    width: 80%
 
 .close
     top: 0
     right: 0
     color: #aaa
-    font-size: 48px
+    font-size: 3rem
     font-weight: bold
     z-index: 5  
+    cursor: pointer
 
     &:focus 
         color: #000
-        cursor: pointer
 
 
 .bar
@@ -101,7 +102,7 @@ body
 .CoolA
     text-decoration: none
     padding: 22px 50px
-    font-size: 25px
+    font-size: 1.6rem
     border: 2px solid #fff
     color: #fff
     text-transform: uppercase
@@ -113,7 +114,7 @@ body
         font-weight: 700
 
 h3
-    font-size: 30px
+    font-size: 1.875rem
     text-transform: uppercase
     font-weight: 800
     text-align: center
@@ -128,31 +129,31 @@ h3
         position: absolute
         width: 70px
         height: 3px
-        top: 70px
+        top: 200%
         left: 50%
         transform: translateX(-35px)
 
 .UnderH
     font-family: "Roboto Slab"
-    font-size: 26px
+    font-size: 1.6rem
     text-align: center
+    padding: 0 40px
 
 .ServicesBlock
-    padding: 100px 0 40px 
+    padding: 100px 0 60px 
 
     .ServiceCards
-        padding: 100px 285px 0
+        padding: 100px 10% 0
         flex-wrap: wrap
-
-        +media(1300)
+        +media(1400)
             flex-wrap: nowrap
 
         .card
             border: none
+            padding-bottom: 100px
+            +media(1400)
+                padding-bottom: 0
             
-            +media(1300)
-                padding-bottom: 100px
-
             .IconFrame 
                 width: 140px
                 height: 140px
@@ -182,18 +183,21 @@ h3
             .card-body
                 font-family: "Roboto Slab"
                 text-align: center
-                margin: 0 25px
+                margin: 0
+                +media(760)
+                    margin: 0 25px
                 color: #555
 
                 h5
                     font-family: "Montserrat", sans-serif
                     font-weight: 500
                     padding: 25px 0
-                    font-size: 25px
+                    font-size: 1.6rem
                     text-transform: uppercase
 
                 p
-                    font-size: 25px
+                    font-size: 1.6rem
+
 .works
     padding: 140px 0
     margin: 0 auto
@@ -213,6 +217,7 @@ h3
         display: flex
         flex-wrap: wrap
         margin: 0 auto
+        justify-content: center
 
         .WorkPicturesContainer
             position: relative
@@ -237,11 +242,11 @@ h3
                 left: 50%
                 transform: translate(-50%, -50%)
                 color: #fff
-                font-size: 34px
+                font-size: 2.1rem
 
                 a 
                     color: transparentize(#c0301c, 0.3)
-                    font-size: 25px
+                    font-size: 1.6rem
                     text-decoration: none
                     padding: 10px 20px
                     background-color: #fff
@@ -268,7 +273,8 @@ h3
     font-family: "Roboto Slab"
 
     p
-        font-size: 50px
+        line-height: 55px
+        font-size: 3.1rem
         padding: 10px 10px 25px
     
     .PAMargin
@@ -287,21 +293,34 @@ h3
 
         .posts
             display: flex
+            flex-direction: column
+            +media(1300)
+                flex-direction: row
 
             .BlockRight
-                width: 40% 
+                width: 100% 
+                +media(1300)
+                    width: 40% 
 
             img
                 width: 100%
-                aspect-ratio: 3 / 2
+                aspect-ratio: 5 / 1
                 object-fit: cover
                 object-position: right center
+                padding: 0 60px 
+                margin: 80px 0
+                +media(1300)
+                    aspect-ratio: 3 / 2
+                    padding: 0
+                    margin: 0
 
             .BlockLeft
                 text-align: left
-                width: 60%
                 padding-bottom: 110px
                 padding-left: 60px
+                width: 100% 
+                +media(1300)
+                    width: 60% 
 
                 .BlogBlock
 
@@ -310,7 +329,7 @@ h3
                         display: inline-block
                         padding: 15px 0
                         border: 2px solid #000
-                        font-size: 35px
+                        font-size: 2.2rem
                         letter-spacing: 2px
                         text-transform: uppercase
                         color: #777
@@ -329,12 +348,12 @@ h3
                     font-family: "Roboto Slab"
 
                     p
-                        font-size: 25px
+                        font-size: 1.6rem
                         padding: 30px 0 70px
                         color: #555
 
                     a
-                        font-size: 20px
+                        font-size: 1.25rem
                         text-decoration: none
                         color: #777
                         font-weight: 800
@@ -356,18 +375,27 @@ h3
     div
         width: 55%
         margin: 0 auto
+        flex-wrap: wrap
+        +media(1300)
+            flex-wrap: nowrap
 
     .Partners-text
-        padding: 70px 70px 0
+        padding: 70px 0
+        +media(1300)
+            padding: 70px 70px 0
 
     img
-        padding: 0 15px
-        width: 20%
+        margin: 0 50px
         height: 60px
+        width: 100%
         object-fit: contain
+        +media(1300)
+            width: 20%
+            margin: 0 20px
+            padding: 0 30px
 
     p
-        font-size: 25px
+        font-size: 1.6rem
         color: #555
         font-weight: 400
         line-height: 50px
@@ -377,7 +405,7 @@ h3
 
     .partner-name
         margin: 40px 0 50px
-        font-size: 30px
+        font-size: 1.9
         font-style: normal
 
     .dots
@@ -399,18 +427,29 @@ h3
         padding: 0 15%
         vertical-align: top
         display: flex
+        flex-direction: column
+        +media(1320)
+            flex-direction: row
+        
             
     .PersonalInfoBlock 
         text-align: left
-        padding: 90px 5px 
-        width: 30%
+        padding: 100px 0 0 
         display: inline-block
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        width: 100%
+        +media(1320)
+            width: 30%
+            flex-direction: column
+            padding: 90px 5px 
 
         div
             width: 300px
             font-family: "Roboto Slab"
             margin-bottom: 30px
-            font-size: 20px
+            font-size: 1.25rem
 
             svg
                 margin-right: 30px
@@ -429,14 +468,16 @@ h3
     .InputsBlock
         padding: 60px 5px
         text-align: left
-        width: 70%
         display: inline-block
+        width: 100%
+        +media(1320)
+            width: 70%
 
         .SendMessage
             width: 220px
 
         span
-            font-size: 20px
+            font-size: 1.25rem
             text-align: left
             margin-left: 40px
             margin-top: 20px
@@ -447,14 +488,18 @@ h3
             display: inline-block
             outline: none
             font-family: "Roboto Slab"
-            font-size: 20px
+            font-size: 1.25rem
             margin: 20px 30px
             padding: 25px 35px
             text-transform: uppercase
-            width: calc( 50% - 60px )
             box-sizing: border-box
             background-color: transparent
+            width: 100%
+            +media(770)
+                width: calc( 50% - 60px )
 
         textarea
             overflow-y: scroll
-            width: calc( 100% - 60px )
+            width: 100%
+            +media(770)
+                width: calc( 100% - 60px )

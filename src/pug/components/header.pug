@@ -1,6 +1,9 @@
 .HeaderLinks
     h2(style="vertical-align: middle") Startup 
     +navigmenu(menu,"HeaderLinksMenu","hamburger")
+.HamMenu
+    span(id="HamClose").close &times;
+    +navigmenu(menu,"HamLinks","hamhamburger")
 .ImageContainerHeader 
     h1.WelcomeStartup.text-uppercase welcome to startup
     p Your Favourite Creative Agency Template
@@ -8,7 +11,7 @@
     .popup 
         .popup-content
             .popup-inputs
-                span.close &times;
+                span(id="close").close &times;
                 input.EnterName(type="text", name="" placeholder="Enter your name")
                 input.EnterPassword(type="password", name="" placeholder="Enter your password")
             .bar 

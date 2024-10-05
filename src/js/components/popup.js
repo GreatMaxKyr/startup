@@ -4,7 +4,7 @@ let TgMax, TgMin
 let drag, name, password
 let circle = document.querySelector(".circle")
 let bar = document.querySelector(".bar")
-let closeBtn = document.querySelector(".close")
+let closeBtn = document.getElementById("close")
 let EnterName = document.querySelector(".EnterName")
 let EnterPassword = document.querySelector(".EnterPassword")
 let WelcomeStartup = document.querySelector(".WelcomeStartup")

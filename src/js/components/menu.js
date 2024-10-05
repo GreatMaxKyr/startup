@@ -1,3 +1,4 @@
+let headerLinksMenu = document.querySelector('.HeaderLinksMenu')
 let headerLinks = document.querySelector('.HeaderLinks')
 let headerLinksA = document.querySelectorAll('.HeaderLinksA')
 let header = document.querySelector('header')
@@ -28,3 +29,15 @@ window.addEventListener('wheel', function(event) {
 
     lastScrollTop = scrollTop
 })
+
+let HamburgerBtn = document.querySelector(".hamburger")
+let HamClose = document.getElementById("HamClose")
+
+HamburgerBtn.onclick = () => {
+    let HamLinks = document.querySelector(".HamLinks")
+    HamLinks.style.width = "100%"
+}
+
+HamClose.onclick = () => {
+    HamLinks.style.width = "0"
+}

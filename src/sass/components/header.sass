@@ -1,27 +1,69 @@
+.hamburger
+    display: block
+    +media(1200)
+        display: none
+
+.hamhamburger
+    display: none
+
+.HamMenu 
+  height: 100vh
+  width: 100%
+//   width: 0
+  position: fixed
+  z-index: 1
+  top: 0
+  left: 0
+  background-color: rgba(192, 48, 28, 0.99)
+  overflow-x: hidden
+  transition: 0.5s
+  padding-top: 60px
+
+.HamMenu a 
+  padding: 8px 8px 8px 32px
+  text-decoration: none
+  font-size: 25px
+  display: block
+  color: #f1f1f1
+  transition: 0.3s
+
+.HamMenu a:hover 
+  color: #818181
+
+.HamMenu span
+  color: #fff
+    
 .HeaderLinks 
     position: fixed
-    display: flex
     justify-content: space-between
     color: #fff
-    padding: 50px 15%
+    padding: 50px 10%
     width: 100%
     z-index: 2
     transition:  ease
+    align-items: center
+    display: flex
+    flex-direction: row
 
     h2
-        font-size: 40px
+        font-size: 2.5rem
         font-weight: 700
 
     .HeaderLinksMenu
-        text-align: right
-        margin-top: 20px
-        margin-left: 30vw
+        margin: 0
+        text-align: center
+        display: none
+        +media(1200)
+            display: block
+            text-align: right
 
     a
         text-decoration: none
         color: #fff
         font-size: 20px
-        padding: 30px
+        padding-right: 35px
+        &:last-child
+            padding-right: 0
 
 .ImageContainerHeader
     background-image: url(../img/RedWall.png)
@@ -30,22 +72,9 @@
     color: #fff
     padding: 510px 15px
     text-align: center
-    // z-index: -2
-    // position: relative
-
-    // &::before
-    //     position: absolute
-    //     content: ""
-    //     height: 100%
-    //     width: 100%
-    //     top: 0
-    //     left: 0
-    //     background-color: #000
-    //     z-index: -1
-    //     opacity: 0.25
 
     h1
-        font-size: 76px
+        font-size: 4.75rem
     
     p
         padding: 30px 0 95px
