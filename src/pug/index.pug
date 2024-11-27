@@ -12,11 +12,17 @@ html(lang="en")
         include components/mixins
     body 
     
-        header.visible
+        header.RevealAvoid
             include components/header
         main
             include components/main
-        footer.visible
+        footer.RevealAvoid
             include components/footer
+
+        .toast-container.position-fixed.RevealAvoid.rounded-2.p-4.pb-3
+            div.RevealAvoid
+                strong.RevealAvoid.me-auto Startup team
+            div.RevealAvoid
+                p.RevealAvoid.MessageOutPut 
 
         script(src="js/script.js")

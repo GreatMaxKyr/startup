@@ -1,101 +1,129 @@
-// let slider = document.querySelector(".AboutPhotos")
-// let slides = document.querySelectorAll(".AboutPhotosPeopleBlocks")
-// slider.style.position = "relative"
-// window.onload = () => {slider.style.height = slides[0].getBoundingClientRect().height+200 +"px"}
-// let SliderWidth = slider.getBoundingClientRect().width
-// console.log(SliderWidth)
-// slides.forEach((slide,index) => {
-//     slide.style.left = index * 400 +"px"
-//     slide.style.position = "absolute"})
-
-// let slideTimer = setInterval(() => {
-//     slides = document.querySelectorAll(".AboutPhotosPeopleBlocks")
-
-//     let phantomSlide  = slides[0].cloneNode(true)
-//     slider.appendChild(phantomSlide)
-//     phantomSlide.style.left = 1600 +"px"
-
-//     let InsidelideTimer = setInterval(() => {
-//         slides.forEach((slide,index) => {
-//             slide.style.left = index*400 - 500 +"px"
-//         })
-//         phantomSlide.style.left = "1100px"
-//         slides[0].remove()
-//     }, 1000)
-// }, 10000)   
-
-let slider = document.querySelector(".AboutPhotos");
-    let slides = Array.from(document.querySelectorAll(".AboutPhotosPeopleBlocks"));
-    let currentIndex = 0;
-    let cardWidth;
-    let visibleCardsCount;
-
-    // Function to set layout based on container size
-    function setCarouselLayout() {
-        cardWidth = slides[0].getBoundingClientRect().width;
-        let sliderWidth = slider.getBoundingClientRect().width;
-
-        // Calculate how many cards can fit inside the slider based on its width
-        visibleCardsCount = Math.floor(sliderWidth / (cardWidth + 10));
-
-        // Set the height of the slider container to match the cards
-        slider.style.height = slides[0].getBoundingClientRect().height + "px";
-
-        // Initial positioning of cards
-        slides.forEach((slide, index) => {
-            slide.style.transform = `translateX(${index * (cardWidth + 10)}px)`;  // 10px for margin
-            slide.style.opacity = 1; // Ensure all slides start fully visible
-        });
+class Slider {
+    constructor(sliderInterval) {
+        this.sliderInterval = sliderInterval;
+        this.currentIndex = 0;
+        this.MaxCardWidth = 420;
+        this.ResizeByGap = false;
+        this.MaxCardDistance = 20;
     }
 
-    // Function to move slides with sliding and fade animation
-    function slideCards() {
-        slides.forEach((slide, index) => {
-            // Fade out the first card when it moves out
-            if (index === currentIndex) {
-                slide.style.opacity = 0;
-            }
-            // Slide all cards left by one card width
-            slide.style.transform = `translateX(${(index - currentIndex) * (cardWidth + 10)}px)`;
+    init(sliderSelector, slideSelector) {
+        this.slider = document.querySelector(sliderSelector);
+        this.slides = Array.from(document.querySelectorAll(slideSelector));
+        let SliderHeight = this.slider.getBoundingClientRect().height + 30
+        this.sliderCardDistance = 140
+
+        this.slides.forEach(element => {
+            element.style.position = "absolute"
         });
 
+        this.setLayout();
+        this.runShift();
+        window.onresize = this.setLayout.bind(this);
 
-        // After the transition, move the first card to the end of the slider
+        this.slider.style.minHeight = SliderHeight + "px"
+    }
+
+    setLayout() {
+        this.cardWidth = this.slides[0].getBoundingClientRect().width;
+        this.sliderWidth = this.slider.getBoundingClientRect().width;
+        this.visibleCardsCount = Math.floor(this.sliderWidth / (this.cardWidth + 10));
+        // this.slider.style.height = getComputedStyle(this.slides[0]).scrollHeight;
+        // this.slider.style.height = this.slider.scrollHeight;
+        
+        if (this.visibleCardsCount > 1) {
+            if (this.sliderWidth > this.cardWidth * this.slides.length) {
+                // this.sliderWidth - (this.cardWidth * this.slides.length) 
+                if (this.ResizeByGap) {
+                   this.sliderCardDistance = (this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount - 1)
+                } else {
+                    this.sliderCardDistance = this.MaxCardDistance
+                    this.slides.forEach(element => {
+                        this.cardWidth = (this.sliderWidth - this.MaxCardDistance*(this.visibleCardsCount - 1))/this.visibleCardsCount
+                        element.style.width = this.cardWidth +"px"
+                    });
+                }
+            } else {
+               this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
+            }
+        }
+
+        // this.slides.forEach((slide, index) => {
+        //     slide.style.left = `translateX(${index * (this.cardWidth + 10)}px)`;
+        // });
+    }
+
+    runShift() {
+        this.timer = setInterval(() => {
+            this.currentIndex++;
+            if (this.currentIndex >= this.slides.length) {
+                this.currentIndex = 0;
+            }
+            this.slideCards();
+        }, this.sliderInterval);
+    }
+
+    stopShift() {
+        clearInterval(this.timer);
+    }
+
+    slideCards() {
+        let PhantomSlide = this.slides[0].cloneNode(true)
+        PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "px"
+        this.slider.appendChild(PhantomSlide)
+        this.slides.push(PhantomSlide)
+        
         setTimeout(() => {
-            // Move the first card to the end of the slider (seamless effect)
-            let firstSlide = slides.shift(); // Remove the first slide from the array
-            firstSlide.style.opacity = 0; // Set opacity to 0 for the slide moving to the end (fade-in)
-
-            slider.appendChild(firstSlide); // Append it to the end of the slider
+            this.slides.forEach((slide, index) => {
+                slide.style.left = (index - 1) * (this.cardWidth + this.sliderCardDistance) + "px"
+            })
+            // let firstSlide = this.slides.shift(); // Remove first
+            // firstSlide.style.opacity = 0; 
+            // this.slider.appendChild(firstSlide); // Move first to last
 
             // Recalculate the slides array
-            slides = Array.from(document.querySelectorAll(".AboutPhotosPeopleBlocks"));
-            firstSlide.style.transform = `translateX(${(slides.length - 1) * (cardWidth + 10)}px)`; // Move the new last slide to the correct position
+            // this.slides = Array.from(document.querySelectorAll(".AboutPhotosPeopleBlocks"));
+            
+            let DeadSlide = this.slides.shift() //dont delete
+            // DeadSlide.style.left = - this.cardWidth - 10 + "px"
 
-            // Fade-in effect for the appended slide
+            // Fade in
             setTimeout(() => {
-                firstSlide.style.opacity = 1; // Gradually fade it back in
-            }, 100); // Delay to ensure transition starts smoothly
+                // firstSlide.style.opacity = 1;
 
-            // Reset the position to create the seamless transition effect
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Keep the index within bounds
-        }, 100); // Match this timeout with the animation duration
+                DeadSlide.remove() //dont delete
+            }, this.sliderInterval);
+
+            // Reset the current index
+            this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        }, 100);
+    }
+}
+
+class Carousel extends Slider {
+    setLeftButton(leftButton) {
+        leftButton.onclick = () => {
+            this.slideLeft(3);
+        };
     }
 
-    // Set initial layout and add resize event listener
-    window.onload = () => {
-        setCarouselLayout();
-    };
+    setRightButton(rightButton) {
+        rightButton.onclick = () => {
+            this.slideRight(3);
+        };
+    }
 
-    window.onresize = () => {
-        setCarouselLayout();
-    };
+    slideLeft(howManySlidesMove) {
+        this.currentIndex = (this.currentIndex - howManySlidesMove + this.slides.length) % this.slides.length;
+        this.slideCards();
+    }
 
-    // Set interval to move cards
-    let slideTimer = setInterval(() => {
-        currentIndex++;
-        if (currentIndex >= slides.length) {
-            currentIndex = 0;
-        }
-        slideCards();
-    }, 5000)
+    slideRight(howManySlidesMove) {
+        this.currentIndex = (this.currentIndex + howManySlidesMove) % this.slides.length;
+        this.slideCards();
+    }
+}
+
+// Initialize the slider
+let mySlider = new Slider(3000);
+mySlider.init(".AboutPhotos", ".AboutPhotosPeopleBlocks");

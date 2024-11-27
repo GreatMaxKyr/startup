@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>startup</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .table-container {
+            width: 100%;
+        }
+
+        .table-container th, .table-container td {
+            padding: 50px 10px;
+            text-align: center;
+        }
+        
+        .table-header {
+            font-weight: 100;
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .table-footer {
+            background-color: #eee;
+            font-size: 14px;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+<table class="table-container">
+
+    <tr class="table-header">
+        <th colspan="2">
+            <h1>Startup</h1>
+        </th>
+    </tr>
+
+    <tr class="table-main-body">
+        <td>
+            <h3>Name:</h3>
+            <p>$name</p>
+        </td>
+        <td>
+            <h3>E-mail:</h3>
+            <p>$email</p>
+        </td>
+    </tr>
+
+    <tr class="table-main-body">
+        <td>
+            <h3>Subject:</h3>
+            <p>$subject</p>
+        </td>
+        <td>
+            <h3>Company name:</h3>
+            <p>$company</p>
+        </td>
+    </tr>
+    
+    <tr class="table-main-body">
+        <td colspan="2">
+            <h3>Message:</h3>
+            <p>$message</p>
+        </td>
+    </tr>
+
+    <tr class="table-footer">
+        <td colspan="2"><p>&copy;2015 Startup, Designed by ShapedTheme</p></td>
+    </tr>
+</table>
+</body>
+</html>
