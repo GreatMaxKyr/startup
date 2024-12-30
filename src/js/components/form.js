@@ -6,6 +6,8 @@ let popupContent = document.querySelector(".popup-content")
 let InputClose = document.querySelector(".InputClose")
 let EmailSendConfirm = document.getElementById("emailsendconfirm")
 
+let TouchBlock = document.querySelector(".Touch")
+
 let toast = document.querySelector('.toast-container')
 let MessageOutPut = document.querySelector('.MessageOutPut')
 
@@ -28,7 +30,11 @@ SendMessage.onclick = (event) => {
     InputPopup.style.display = 'block'
     body.style.overflowY = 'hidden'
     popupContent.style.backdropFilter = 'blur(5px)'
-    scrollTo(0,9450)
+    TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+document.querySelector(".DoYouGetInTouch").onclick = () => {
+    TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 InputClose.onclick = () => {

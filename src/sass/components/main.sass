@@ -13,7 +13,7 @@
 
         p
             padding-top: 40px
-            font-size: 1.5rem
+            font-size: 14rem
             margin: 0
             +media(760)
                 margin: 0 30px 0
@@ -30,18 +30,22 @@
         text-align: center
         flex-wrap: nowrap
         box-sizing: border-box
-        margin-bottom: 200px
         overflow: hidden
         position: relative
+        margin-bottom: 80px
 
         .AboutPhotosPeopleBlocks 
             transition: all 0.5s ease-in-out
-            width: 420px
             display: inline-block
             text-align: center
             // position: absolute
             opacity: 1
             z-index: 3
+            width: 210px
+            +media(1000)
+                width: 250px
+            +media(1440)
+                width: 320px
 
             &:hover .AboutPhotosSocialBlock
                 display: block
@@ -67,3 +71,12 @@
                     width: 100%
                     height: 100%
                     object-fit: cover
+            
+            h4
+                font-size: 18rem
+                padding-top: 30rem
+
+            p
+                font-size: 18rem
+                font-weight: 400
+                font-family: "Roboto Slab"

@@ -46,7 +46,10 @@ circle.onmousedown = function(e) {
 
       setTimeout(() => {
         popup.style.display = "none"
-        WelcomeStartup.innerText = "welcome " + EnterName.value
+        body.style.overflowY = 'auto'
+        if (EnterName.value !== "") {
+          WelcomeStartup.innerText = "welcome " + EnterName.value
+        }
       }, "1000")
       setTimeout(() => {
         alert("login succesfull")

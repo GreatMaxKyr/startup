@@ -6,7 +6,7 @@ paralax.forEach((ImageName,index) => {
     ImageName.onmousemove = (e) => {
         let Maxwidth = ImageName.getBoundingClientRect().width
         let Maxheight = ImageName.getBoundingClientRect().height
-        ImageName.style.backgroundPositionX = -40*(e.pageX / Maxwidth)  + "px"
+        ImageName.style.backgroundPositionX = -20*(e.pageX / Maxwidth)  + "px"
         if (index==1) {
             ImageName.style.backgroundPositionY = 20*(e.pageY / Maxheight) + -185 + "px"
         } else {
