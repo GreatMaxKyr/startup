@@ -8,8 +8,8 @@ class Slider {
     }
 
     init(sliderSelector, slideSelector) {
-        this.slider = document.querySelector(sliderSelector);
-        this.slides = Array.from(document.querySelectorAll(slideSelector));
+        this.slider = document.querySelector(sliderSelector); //slider is parent of all cards
+        this.slides = Array.from(document.querySelectorAll(slideSelector)); //cards that move around
         let SliderHeight = this.slider.getBoundingClientRect().height + 30
         this.sliderCardDistance = 140
 
@@ -26,6 +26,11 @@ class Slider {
     }
     
     setSlidePosition() {
+        this.slides.forEach((slide, index) => {
+            slide.style.left = (index - 1) * (this.cardWidth + this.sliderCardDistance) + "rem"
+        })
+    }
+    setSlidePositionRight() {
         this.slides.forEach((slide, index) => {
             slide.style.left = (index - 1) * (this.cardWidth + this.sliderCardDistance) + "rem"
         })
@@ -71,12 +76,12 @@ class Slider {
         //triger
     }
 
-    slideCards() {
+    slideCards() { //make phantom slide
         let PhantomSlide = this.slides[0].cloneNode(true)
         PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "rem"
         this.slider.appendChild(PhantomSlide)
         this.slides.push(PhantomSlide)
-        
+        //move phantom slide
         setTimeout(() => { //dont touch
             this.setSlidePosition()
             let DeadSlide = this.slides.shift()
@@ -88,35 +93,67 @@ class Slider {
             this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
         }, 100);
     }
+
+    slideCardsRight() {
+        let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
+        PhantomSlide.style.right = `-${this.cardWidth + this.sliderCardDistance}rem`
+        this.slider.prepend(PhantomSlide)
+        this.slides.unshift(PhantomSlide)
+    
+        setTimeout(() => {
+            this.setSlidePositionRight()
+            let DeadSlide = this.slides.pop()
+            DeadSlide.remove()
+            this.trigger()
+        }, 100)
+    }
 }
 
 
+
+
 class Carousel extends Slider {
-    constructor(setTime){
-        super(setTime)
-    }
 
     setLeftButton(leftButton) {
-        leftButton.onclick = () => {
+        this.leftButton = document.querySelector(leftButton)
+        this.leftButton.onclick = () => {
             this.slideLeft(3);
+            console.log("left arrow")
         };
     }
-
+    
     setRightButton(rightButton) {
-        rightButton.onclick = () => {
+        this.rightButton = document.querySelector(rightButton)
+        this.rightButton.onclick = () => {
             this.slideRight(3);
+            console.log("right arrow")
         };
     }
 
-    // slideLeft(howManySlidesMove) {
-    //     this.currentIndex = (this.currentIndex - howManySlidesMove + this.slides.length) % this.slides.length;
-    //     this.slideCards();
-    // }
+    slideLeft(ShiftNumber) {
+        for (let i = 0; i < ShiftNumber; i++) {
+            setTimeout(() => {
+                this.slideCards()
+            }, 110 * i);
+        }
+        this.stopShift()
+        setTimeout(() => {
+            this.runShift()
+        }, this.sliderInterval);
+    }
 
-    // slideRight(howManySlidesMove) {
-    //     this.currentIndex = (this.currentIndex + howManySlidesMove) % this.slides.length;
-    //     this.slideCards();
-    // }
+    
+    slideRight(ShiftNumber) {
+        for (let i = 0; i < ShiftNumber; i++) {
+            setTimeout(() => {
+                this.slideCardsRight();
+            }, 110 * i);
+        }
+        this.stopShift();
+        setTimeout(() => {
+            this.runShift();
+        }, this.sliderInterval);
+    }
 }
 
 class BrandSlider extends Slider {
@@ -124,8 +161,8 @@ class BrandSlider extends Slider {
         super(setTime)
     }
 
-    activeDot = 1
-    activeQuote  = 1
+    activeDot = 2
+    activeQuote  = 2
 
     setDots(dotElementName) {
         this.dotElement = document.querySelectorAll(dotElementName)
@@ -152,6 +189,8 @@ class BrandSlider extends Slider {
 // Initialize the slider
 // let mySlider = new Slider(5000);
 let mySLider = new Carousel(3000);
+mySLider.setLeftButton(".slideLeft")
+mySLider.setRightButton(".slideRight")
 mySLider.init(".AboutPhotos", ".AboutPhotosPeopleBlocks");
 
 
@@ -159,34 +198,36 @@ let myBrandSlider = new BrandSlider(3000);
 myBrandSlider.init(".Partners-images",".Partners-images img");
 myBrandSlider.setDots(".dot-selection")
 
+
+
 let quotes = [
     {
         person: "Steve Jobs",
-        text: "Your work is a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. Love what you do. If you haven't found it yet, keep looking. Don't settle. Follow your heart—you'll know when you find it."
+        text: "Your work is a large part of your life, and the only way to be truly satisfied is to use creative tools that reflect your vision. This creative agency template company redefines what it means to build great projects. If you haven’t found the right way to express your ideas yet, keep exploring. Don’t settle for less—this is the solution to bring your work to life."
     },{
         person: "Jeff Bezos",
-        text: "A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well. It's what people say about you when you're not in the room, and what they trust you'll deliver, time and again."
+        text: "A brand for a company is like a reputation for a person. This creative agency template platform helps you establish a strong brand by giving you tools to create with precision and quality. It's what clients remember when you're not in the room and what they trust to deliver professional results time and again."
     },{
         person: "Sergey Brin",
-        text: "We strive to define what it means to be a force for good—always choosing the ethical path. 'Don't be evil' is the simplest summary. This principle guides our innovations and decisions, ensuring technology improves lives while staying true to what's right."
+        text: "We strive to define what it means to be a force for good—always choosing the ethical path. This creative agency template company lives by this principle, providing solutions that enable businesses to create stunning and ethical designs. It's not just about templates; it's about empowering creativity in a way that truly makes a difference."
     },{
         person: "Indra Nooyi",
-        text: "Never assume you've arrived. Even as CEO, you must keep learning, evolving your thinking, and challenging your approach to the organization. Leadership is not static. It's about continuous growth and adapting to meet ever-changing challenges and opportunities."
+        text: "Never assume you've arrived. Even as a top creative, you must keep refining your approach. This creative agency template company is designed for leaders who are constantly evolving. It offers a fresh perspective, allowing you to challenge your creative thinking and stay ahead in an ever-changing market."
     },{
         person: "Richard Branson",
-        text: "Branding is about commitment—reinventing continuously, connecting emotionally with people, and fostering imagination. Cynicism is easy; success requires belief, persistence, and the courage to stand for something meaningful in the minds of your customers and the world."
+        text: "Branding is about commitment—reinventing continuously, connecting emotionally with clients, and fostering imagination. This creative agency template company isn’t just about templates; it’s about creating experiences that resonate. Their offerings inspire belief, persistence, and the courage to craft something truly meaningful."
     },{
         person: "Григорій Сковорода",
-        text: "Всякому місту свій нрав і права. Всяка іміє свій ум - голова"
+        text: "Всякому місту свій нрав і права. Кожен проект має свій стиль і характер. Ця компанія шаблонів для креативних агентств дозволяє поєднати унікальність і професіоналізм, щоб кожен проект був витвором мистецтва."
     },{
         person: "Тарас Шевченко",
-        text: "Садок вишневий коло хати, вечірня зіронька стає"
+        text: "Садок вишневий коло хати, вечірня зіронька стає. А ці шаблони для креативних агентств, як зорі вечірні, додають краси кожному проекту. Вони допомагають створювати ідеї, які захоплюють і надихають."
     },{
         person: "Леся Українка",
-        text: "Ні, я хочу крізь сльози сміятись,Серед лиха співати пісні,Без надії таки сподіватись,Жити хочу! Геть, думи сумні"
+        text: "Ні, я хочу крізь сльози сміятись, серед лиха співати пісні. Ця компанія шаблонів для креативних агентств дає змогу творити, незважаючи на будь-які труднощі. Це натхнення, стиль і потужний поштовх до нових вершин."
     },{
         person: "Володимир Зеленський",
-        text: "Вийди отсюда робійник"
+        text: "Вийди отсюда робійник! Але якщо створюєш креативні проекти, зайди і скористайся цими шаблонами для агентств. Вони зручні, красиві, і допоможуть виглядати професійно. Це шлях до ідеальних презентацій і результатів!"
     }
 ]
 

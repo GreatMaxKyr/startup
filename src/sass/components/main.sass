@@ -1,6 +1,6 @@
 .AboutUsBlock
-    background-color: #f8f8f8  
-    padding: 150px 10% 50px
+    background-color: #f8f8f8
+    padding: 150px 10% 100px
 
     .AboutParagraphs
         font-family: "Roboto Slab"
@@ -25,16 +25,30 @@
             +media(1020)
                 margin-left: 50px
 
-    .AboutPhotos 
+    .AboutPhotos
         padding: 90px 0
         text-align: center
         flex-wrap: nowrap
         box-sizing: border-box
         overflow: hidden
         position: relative
-        margin-bottom: 80px
 
-        .AboutPhotosPeopleBlocks 
+        .slideLeft,.slideRight
+            position: absolute
+            top: 38%
+            z-index: 5
+            transition: transform 0.2s ease, background-color 0.2s ease
+
+            &:hover
+                transform: scale(1.1)
+
+        .slideLeft
+            left: 5px
+
+        .slideRight
+            right: 5px
+
+        .AboutPhotosPeopleBlocks
             transition: all 0.5s ease-in-out
             display: inline-block
             text-align: center
@@ -42,6 +56,7 @@
             opacity: 1
             z-index: 3
             width: 210px
+            aspect-ratio: 1 / 1
             +media(1000)
                 width: 250px
             +media(1440)
@@ -52,7 +67,7 @@
 
             div
                 position: relative
-                
+
                 .AboutPhotosSocialBlock
                     display: none
                     position: absolute
@@ -70,8 +85,8 @@
                 img
                     width: 100%
                     height: 100%
-                    object-fit: cover
-            
+                    object-fit: contain
+
             h4
                 font-size: 18rem
                 padding-top: 30rem

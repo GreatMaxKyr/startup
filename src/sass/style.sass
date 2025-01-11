@@ -29,9 +29,9 @@ body
   transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s, margin-top 0.5s ease, background-color 0.5s ease, color 0.5s ease-out
 
 .reveal.visible 
-  opacity: 1
-  filter: blur(0)
-  transform: translateY(0)
+    opacity: 1
+    filter: blur(0)
+    transform: translateY(0)
 
 .toast-container
     bottom: 30px
@@ -249,7 +249,16 @@ h3
             padding: 15px
             
             &:hover
-                color: #c0301c
+                color: #464545
+        
+        .SelectedFilter
+            font-weight: 600
+            color: #c0301c
+            text-decoration: underline
+
+            &:hover
+                color: #a92918
+            
         
     .WorkPicturesBlock
         margin-top: 100px
@@ -307,11 +316,11 @@ h3
                     &::after
                         content: ""
                         position: absolute
-                        width: 8px
-                        height: 3px
+                        width: 6.5px
+                        height: 2.4px
                         background-color: transparentize(#c0301c, 0.1)
                         right: 20px
-                        top: 15.5px
+                        top: 16.5px
 
                     &::before
                         transform: rotate(45deg)
@@ -508,7 +517,7 @@ h3
         font-style: normal
 
     .dots
-        width: 100px
+        width: 200px
 
         .dot-selection
             transition: all 0.3s ease-in-out
