@@ -18,7 +18,7 @@ class Slider {
         });
 
         this.setLayout();
-        this.setSlidePosition()
+        this.setSlidePositionRight();
         this.runShift();
         window.onresize = this.setLayout.bind(this);
         
@@ -32,7 +32,7 @@ class Slider {
     }
     setSlidePositionRight() {
         this.slides.forEach((slide, index) => {
-            slide.style.left = (index - 1) * (this.cardWidth + this.sliderCardDistance) + "rem"
+            slide.style.left = (index) * (this.cardWidth + this.sliderCardDistance) + "rem"
         })
     }
 
@@ -60,12 +60,13 @@ class Slider {
 
     runShift() {
         this.timer = setInterval(() => {
-            this.currentIndex++;
-            if (this.currentIndex >= this.slides.length) {
-                this.currentIndex = 0;
-            }
-            this.slideCards();
-        }, this.sliderInterval);
+            this.slideCards()
+        }, this.sliderInterval)
+    }
+    runShiftRight() {
+        this.timer = setInterval(() => {
+            this.slideCardsRight()
+        }, this.sliderInterval)
     }
 
     stopShift() {
@@ -76,36 +77,39 @@ class Slider {
         //triger
     }
 
+    slide3cards() {
+        //render 3 phantom cards at once and move them
+    }
+
     slideCards() { //make phantom slide
         let PhantomSlide = this.slides[0].cloneNode(true)
         PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "rem"
         this.slider.appendChild(PhantomSlide)
         this.slides.push(PhantomSlide)
-        //move phantom slide
+        
         setTimeout(() => { //dont touch
-            this.setSlidePosition()
-            let DeadSlide = this.slides.shift()
-            this.trigger()
+            this.setSlidePosition() //move to right position
+            let DeadSlide = this.slides.shift() //remove first slide
             setTimeout(() => {
-                DeadSlide.remove() 
-            }, this.sliderInterval);
-
-            this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                DeadSlide.remove()
+            }, this.sliderInterval)
         }, 100);
     }
-
+    
     slideCardsRight() {
         let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
-        PhantomSlide.style.right = `-${this.cardWidth + this.sliderCardDistance}rem`
-        this.slider.prepend(PhantomSlide)
+        PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "rem"
+        this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
         this.slides.unshift(PhantomSlide)
-    
+        
         setTimeout(() => {
             this.setSlidePositionRight()
             let DeadSlide = this.slides.pop()
-            DeadSlide.remove()
-            this.trigger()
+            setTimeout(() => {
+                DeadSlide.remove() 
+            }, this.sliderInterval)
         }, 100)
+        
     }
 }
 
@@ -117,7 +121,7 @@ class Carousel extends Slider {
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
-            this.slideLeft(3);
+            this.slideLeft(1);
             console.log("left arrow")
         };
     }
@@ -125,35 +129,45 @@ class Carousel extends Slider {
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
-            this.slideRight(3);
+            this.slideRight(1);
             console.log("right arrow")
         };
     }
 
+
     slideLeft(ShiftNumber) {
+        this.stopShift()
         for (let i = 0; i < ShiftNumber; i++) {
             setTimeout(() => {
-                this.slideCards()
+                this.slideCards(ShiftNumber)
             }, 110 * i);
         }
-        this.stopShift()
-        setTimeout(() => {
-            this.runShift()
-        }, this.sliderInterval);
+        if (!this.isclicked) {
+            setTimeout(() => {
+                this.runShift()
+                this.isclicked = false
+            }, this.sliderInterval);
+        }
+        this.isclicked = true
     }
-
     
     slideRight(ShiftNumber) {
-        for (let i = 0; i < ShiftNumber; i++) {
+        this.stopShift();
+        for (let i = 0; i < ShiftNumber; i++) { //slide crads right ()
             setTimeout(() => {
                 this.slideCardsRight();
             }, 110 * i);
         }
-        this.stopShift();
-        setTimeout(() => {
-            this.runShift();
-        }, this.sliderInterval);
+        if (!this.isclicked) {
+            setTimeout(() => {
+                this.runShiftRight()
+                this.isclicked = false
+            }, this.sliderInterval);
+        }
+        this.isclicked = true
     }
+
+    isclicked = false
 }
 
 class BrandSlider extends Slider {
@@ -188,7 +202,7 @@ class BrandSlider extends Slider {
 
 // Initialize the slider
 // let mySlider = new Slider(5000);
-let mySLider = new Carousel(3000);
+let mySLider = new Carousel(5000);
 mySLider.setLeftButton(".slideLeft")
 mySLider.setRightButton(".slideRight")
 mySLider.init(".AboutPhotos", ".AboutPhotosPeopleBlocks");
