@@ -5,13 +5,15 @@ class Slider {
         this.MaxCardWidth = 420;
         this.ResizeByGap = true;
         this.MaxCardDistance = 200;
+        this.truecardcount = 0
     }
 
     init(sliderSelector, slideSelector) {
         this.slider = document.querySelector(sliderSelector); //slider is parent of all cards
         this.slides = Array.from(document.querySelectorAll(slideSelector)); //cards that move around
-        let SliderHeight = this.slider.getBoundingClientRect().height + 30
-        this.sliderCardDistance = 140
+        this.truecardcount = this.slides.length;
+        let SliderHeight = this.slider.getBoundingClientRect().height + 30;
+        this.sliderCardDistance = 140;
 
         this.slides.forEach(element => {
             element.style.position = "absolute"
@@ -23,11 +25,28 @@ class Slider {
         window.onresize = this.setLayout.bind(this);
         
         this.slider.style.minHeight = SliderHeight + "px"
+
+        this.slider.ontouchstart = (event) => {
+            this.touchX = event.touches[0].pageX
+        }
+        this.slider.ontouchmove = (event) => {
+            this.lasttouchX = event.touches[0].pageX
+        }
+        this.slider.ontouchend = (event) => {
+            if (this.touchX  >= this.lasttouchX) {
+                this.slideLeft(3)
+            } else {
+                this.slideRight(3)
+            }
+        }
     }
     
-    setSlidePosition() {
+    setSlidePosition(shiftCount) {
+        if (!shiftCount) {
+            shiftCount = 1
+        }
         this.slides.forEach((slide, index) => {
-            slide.style.left = (index - 1) * (this.cardWidth + this.sliderCardDistance) + "rem"
+            slide.style.left = (index - shiftCount) * (this.cardWidth + this.sliderCardDistance) + "rem" //check further
         })
     }
     setSlidePositionRight() {
@@ -78,7 +97,52 @@ class Slider {
     }
 
     slide3cards() {
-        //render 3 phantom cards at once and move them
+        let phantomSlides = []
+    
+        for (let i = 1; i <= 3; i++) {
+            let PhantomSlide = this.slides[this.slides.length - i].cloneNode(true)
+            PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance) * i}rem`
+            this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
+            phantomSlides.unshift(PhantomSlide) //push or unshift
+        }
+    
+        this.slides.unshift(...phantomSlides)
+    
+        setTimeout(() => {
+            this.setSlidePositionRight()
+    
+            for (let i = 0; i < 3; i++) {
+                let DeadSlide = this.slides.pop() //shift or pop
+                setTimeout(() => {
+                    DeadSlide.remove()
+                }, this.sliderInterval)
+            }
+        }, 100)
+    }
+
+    slide3cardsleft() {
+        let phantomSlides = []
+    
+        for (let i = 1; i <= 3; i++) {
+            let PhantomSlide = this.slides[i - 1].cloneNode(true)
+            PhantomSlide.style.left = (this.cardWidth + this.sliderCardDistance) * (3 + i) + "rem"
+            this.slider.insertAdjacentElement('beforeend', PhantomSlide)
+            phantomSlides.push(PhantomSlide) //push or unshift
+        }
+        
+        this.slides.push(...phantomSlides)
+        this.slides.sort((a,b)=> a.getBoundingClientRect().left - b.getBoundingClientRect().left)
+
+        setTimeout(() => {
+            this.setSlidePosition(3)
+
+            for (let i = 0; i < 3; i++) {
+                let DeadSlide = this.slides.shift() //shift or pop
+                setTimeout(() => {
+                    DeadSlide.remove()
+                }, this.sliderInterval)
+            }
+        }, 100)
     }
 
     slideCards() { //make phantom slide
@@ -98,7 +162,8 @@ class Slider {
     
     slideCardsRight() {
         let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
-        PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "rem"
+        PhantomSlide.style.left = this.cardWidth + this.sliderCardDistance + "rem"
+        //PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance) * i}rem`
         this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
         this.slides.unshift(PhantomSlide)
         
@@ -121,16 +186,16 @@ class Carousel extends Slider {
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
-            this.slideLeft(1);
-            console.log("left arrow")
+            this.slideLeft(3)
+            // this.slide3cardsleft()
         };
     }
     
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
-            this.slideRight(1);
-            console.log("right arrow")
+            this.slideRight(3)
+            // this.slide3cards()
         };
     }
 

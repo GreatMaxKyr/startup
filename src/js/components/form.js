@@ -29,7 +29,9 @@ SendMessage.onclick = (event) => {
     });
     InputPopup.style.display = 'block'
     body.style.overflowY = 'hidden'
-    popupContent.style.backdropFilter = 'blur(5px)'
+    InputPopup.style.background = 'rgba(0, 0, 0, 0.3)'
+    InputPopup.style.backdropFilter = 'blur(5px)'
+    InputPopup.style.webkitBackdropFilter = 'blur(5px)'
     TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
@@ -58,11 +60,11 @@ EmailSendConfirm.onclick = (e) => {
         
         if (xhr.status !== 200) {
             MessageOutPut.innerText = "We have faced an error while sending your message, please try again later."
-            toast.classList.add("text-danger-emphasis","bg-danger-subtle")
+            toast.classList.add("text-danger-emphasis","bg-danger-subtle","border","border-danger-subtle")
         }
         else {
             MessageOutPut.innerText = "Your message has been succesfully sent!"
-            toast.classList.add("text-info-emphasis","bg-info-subtle")
+            toast.classList.add("text-info-emphasis","bg-info-subtle","border","border-info-subtle")
             console.log(xhr.response);
         }        
     }
@@ -81,7 +83,7 @@ EmailSendConfirm.onclick = (e) => {
         toast.style.opacity = "100%"
         setTimeout(() => {
             toast.style.opacity = "0"
-            toast.classList.remove("text-danger-emphasis","bg-danger-subtle","text-info-emphasis","bg-info-subtle")
+            toast.classList.remove("text-danger-emphasis","bg-danger-subtle","text-info-emphasis","bg-info-subtle","border")
         }, 100);
     }, 9000);
         

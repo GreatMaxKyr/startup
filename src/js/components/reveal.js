@@ -1,5 +1,28 @@
 let RevealAvoid = document.querySelectorAll(".RevealAvoid")
 
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll("div, p, img, section")
+
+    function reveal() {
+        const windowHeight = window.innerHeight
+        elements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top
+
+        if (elementTop < windowHeight - 100) {
+            element.classList.add("visible")
+        } else {
+            element.classList.remove("visible")
+        }
+        })
+    }
+
+    elements.forEach(element => element.classList.add('reveal'))
+
+    window.addEventListener("scroll", reveal)
+
+    reveal()
+})  
+
 window.addEventListener('wheel', function(event) {
     let scrollTop = window.scrollY
     let ScrolDY = event.deltaY

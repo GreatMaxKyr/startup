@@ -39,8 +39,17 @@ body
     z-index: 5
     background-color: #fff
     opacity: 0
-    max-width: 350px
-    transition: opacity 0.5s ease-out
+    transition: opacity 1s ease-out
+    font-size: 20rem
+    padding: 20px 30px
+    border-radius: 10px
+    max-width: 80%
+    margin: 0 auto
+    +media(550)
+        max-width: 25%
+
+    strong
+        font-size: 25rem
 
 .popup 
     display: none
@@ -63,6 +72,9 @@ body
     text-align: center
     padding: 50px 40px 40px
 
+    button
+        background-color: transparent
+
 .popup-inputs
     position: relative
 
@@ -70,12 +82,18 @@ body
         position: absolute
 
 .popup-content input 
-    margin: 15px
-    padding: 20px 40px
     border-radius: 25px
     font-size: 16rem
     font-weight: 700
-    width: 80%
+    width: 100%
+    margin: 10px 0
+    padding: 20rem 30rem
+    +media(450)
+        padding: 20rem 40rem
+        margin: 15rem
+        width: 80%
+        margin: 15px
+        padding: 20px 40px
 
 .close
     top: -35px
@@ -106,27 +124,39 @@ body
 
 
 .bar
-    margin: 30px auto
-    width: 80%
     border-radius: 70px
-    height: 70px
     background-color: #ccc    
     position: relative
     border: 2px solid #aaa
     box-sizing: border-box
+    height: 40px
+    margin: 30px 0
+    width: 100%
+    +media(550)
+        width: 80%
+        margin: 30px auto
+        height: 70px
 
     .circle
         position: absolute
-        height: 66px
-        width: 68px
         border-radius: 50%
         top: 0
-        left: 1
+        left: 1px
         background-color: #fff
+        height: 35px
+        width: 36px
+        +media(550)
+            height: 66px
+            width: 68px
 
         svg
-            margin-top: 13.5px
-            margin-left: -5px
+            margin-top: 8px
+            margin-left: 2.5px
+            width: 20px
+            +media(550)
+                width: 40px
+                margin-top: 13.5px
+                margin-left: -5px
 
 .CoolA
     text-decoration: none
@@ -171,7 +201,9 @@ h3
         padding: 0
 
 .ServicesBlock
-    padding: 100px 0 60px 
+    padding: 100px 0 60px
+    +media(1400)
+        padding: 100px 0 200px
 
     .ServiceCards
         padding: 100px 10% 0
@@ -536,7 +568,9 @@ h3
                 background-color: #a82716
 
 .Touch
-    padding: 120px 0 170px
+    padding: 120px 0 0
+    +media(768)
+        padding: 120px 0 170px
 
     .TouchBlock
         padding: 60px 15%
