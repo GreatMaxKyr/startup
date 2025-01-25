@@ -34,9 +34,9 @@ class Slider {
         }
         this.slider.ontouchend = (event) => {
             if (this.touchX  >= this.lasttouchX) {
-                this.slideLeft(3)
+                this.slideLeft(1)
             } else {
-                this.slideRight(3)
+                this.slideRight(1)
             }
         }
     }
@@ -162,8 +162,7 @@ class Slider {
     
     slideCardsRight() {
         let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
-        PhantomSlide.style.left = this.cardWidth + this.sliderCardDistance + "rem"
-        //PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance) * i}rem`
+        PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance)}rem`
         this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
         this.slides.unshift(PhantomSlide)
         
@@ -186,16 +185,16 @@ class Carousel extends Slider {
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
-            this.slideLeft(3)
-            // this.slide3cardsleft()
+            // this.slideLeft(3)
+            this.slide3cardsleft()
         };
     }
     
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
-            this.slideRight(3)
-            // this.slide3cards()
+            // this.slideRight(3)
+            this.slide3cards()
         };
     }
 
