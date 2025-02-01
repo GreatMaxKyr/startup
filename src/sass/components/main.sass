@@ -26,7 +26,7 @@
                 margin-left: 50px
 
     .AboutPhotos
-        padding: 90px 0
+        padding: 90px 0 150px
         text-align: center
         flex-wrap: nowrap
         box-sizing: border-box
@@ -35,12 +35,19 @@
 
         .slideLeft,.slideRight
             position: absolute
-            top: 38%
+            width: 45rem
+            height: 45rem
+            top: 250rem
             z-index: 5
             transition: transform 0.2s ease, background-color 0.2s ease
 
             &:hover
                 transform: scale(1.1)
+
+        .slideLeft path,.slideRight path
+            transform: translate(-2px,-2px)
+            +media(450)
+                transform: translate(0,0)
 
         .slideLeft
             left: 5px
@@ -55,12 +62,15 @@
             // position: absolute
             opacity: 1
             z-index: 3
-            width: 210px
             aspect-ratio: 1 / 1
-            +media(1000)
-                width: 250px
-            +media(1440)
-                width: 320px
+            width: 320px
+            // width: 100%
+            // +media(450)
+            //     width: 260px
+            // +media(768)
+            //     width: 280px
+            // +media(1440)
+            //     width: 320px
 
             &:hover .AboutPhotosSocialBlock
                 display: block

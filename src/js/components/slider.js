@@ -3,8 +3,9 @@ class Slider {
         this.sliderInterval = sliderInterval;
         this.currentIndex = 0;
         this.MaxCardWidth = 420;
-        this.ResizeByGap = true;
-        this.MaxCardDistance = 200;
+        this.MinCardWidth = 320;
+        this.ResizeByGap = false;
+        this.MaxCardDistance = 50;
         this.truecardcount = 0
     }
 
@@ -22,7 +23,7 @@ class Slider {
         this.setLayout();
         this.setSlidePositionRight();
         this.runShift();
-        window.onresize = this.setLayout.bind(this);
+        // window.onresize = this.setLayout.bind(this);
         
         this.slider.style.minHeight = SliderHeight + "px"
 
@@ -46,19 +47,19 @@ class Slider {
             shiftCount = 1
         }
         this.slides.forEach((slide, index) => {
-            slide.style.left = (index - shiftCount) * (this.cardWidth + this.sliderCardDistance) + "rem" //check further
+            slide.style.left = (index - shiftCount) * (this.cardWidth + this.sliderCardDistance) + "px" //check further
         })
     }
     setSlidePositionRight() {
         this.slides.forEach((slide, index) => {
-            slide.style.left = (index) * (this.cardWidth + this.sliderCardDistance) + "rem"
+            slide.style.left = (index) * (this.cardWidth + this.sliderCardDistance) + "px"
         })
     }
 
     setLayout() {
-        this.cardWidth = this.slides[0].getBoundingClientRect().width;
-        this.sliderWidth = this.slider.getBoundingClientRect().width;
-        this.visibleCardsCount = Math.floor(this.sliderWidth / (this.cardWidth + 10));
+        this.cardWidth = this.slides[0].getBoundingClientRect().width; //get width of a card
+        this.sliderWidth = this.slider.getBoundingClientRect().width; //get full width of card parent
+        this.visibleCardsCount = Math.floor(this.sliderWidth / (this.MinCardWidth + 10)); // how many cards visible
         
         if (this.visibleCardsCount > 1) {
             if (this.sliderWidth > this.cardWidth * this.slides.length) {
@@ -68,12 +69,20 @@ class Slider {
                     this.sliderCardDistance = this.MaxCardDistance
                     this.slides.forEach(element => {
                         this.cardWidth = (this.sliderWidth - this.MaxCardDistance*(this.visibleCardsCount - 1))/this.visibleCardsCount
-                        element.style.width = this.cardWidth +"rem"
+                        element.style.width = this.cardWidth +"px"
                     });
                 }
             } else {
                this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
             }
+        } else {
+            this.sliderCardDistance = 0
+            this.cardWidth = this.slider.getBoundingClientRect().width
+            console.log(this.cardWidth)
+            
+            this.slides.forEach(element => {
+                element.style.width = this.cardWidth + "px"
+            });
         }
     }
 
@@ -101,7 +110,7 @@ class Slider {
     
         for (let i = 1; i <= 3; i++) {
             let PhantomSlide = this.slides[this.slides.length - i].cloneNode(true)
-            PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance) * i}rem`
+            PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance) * i}px`
             this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
             phantomSlides.unshift(PhantomSlide) //push or unshift
         }
@@ -125,7 +134,7 @@ class Slider {
     
         for (let i = 1; i <= 3; i++) {
             let PhantomSlide = this.slides[i - 1].cloneNode(true)
-            PhantomSlide.style.left = (this.cardWidth + this.sliderCardDistance) * (3 + i) + "rem"
+            PhantomSlide.style.left = (this.cardWidth + this.sliderCardDistance) * (3 + i) + "px"
             this.slider.insertAdjacentElement('beforeend', PhantomSlide)
             phantomSlides.push(PhantomSlide) //push or unshift
         }
@@ -147,7 +156,7 @@ class Slider {
 
     slideCards() { //make phantom slide
         let PhantomSlide = this.slides[0].cloneNode(true)
-        PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "rem"
+        PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "px"
         this.slider.appendChild(PhantomSlide)
         this.slides.push(PhantomSlide)
         
@@ -162,7 +171,7 @@ class Slider {
     
     slideCardsRight() {
         let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
-        PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance)}rem`
+        PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance)}px`
         this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
         this.slides.unshift(PhantomSlide)
         
@@ -185,16 +194,16 @@ class Carousel extends Slider {
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
-            // this.slideLeft(3)
-            this.slide3cardsleft()
+            this.slideLeft(3)
+            // this.slide3cardsleft()
         };
     }
     
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
-            // this.slideRight(3)
-            this.slide3cards()
+            this.slideRight(3)
+            // this.slide3cards()
         };
     }
 
@@ -310,3 +319,7 @@ let quotes = [
 ]
 
 myBrandSlider.setQuote(quotes)
+window.onresize = () => {
+    mySLider.setLayout() 
+    myBrandSlider.setLayout()
+}

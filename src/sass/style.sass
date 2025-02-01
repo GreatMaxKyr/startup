@@ -506,7 +506,9 @@ h3
 
     
 .Partners
-    padding: 170px 0
+    padding: 150rem 0
+    +media(430)
+        padding: 170px 0
     background-color: #f8f8f8
     
     div
@@ -519,7 +521,7 @@ h3
             flex-wrap: nowrap
 
     .Partners-text
-        padding: 70px 0
+        padding: 70px 0 0
         +media(1300)
             padding: 20px 100px 0
 
@@ -549,17 +551,22 @@ h3
         font-style: normal
 
     .dots
-        width: 200px
+        width: 120px
+        +media(430)
+            width: 200px
 
         .dot-selection
             transition: all 0.3s ease-in-out
-            width: 20rem
-            height: 20rem
             border-radius: 50%
             border: 1px solid #bdbdbd
             background-color: #ddd
             &:hover
                 background-color: #cacaca
+            width: 12px
+            height: 12px
+            +media(430)
+                width: 20rem
+                height: 20rem
 
         .activeDot
             border: 1px solid #a02616
