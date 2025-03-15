@@ -51,6 +51,7 @@ body
     strong
         font-size: 25rem
 
+    
 .popup 
     display: none
     position: fixed
@@ -62,7 +63,7 @@ body
     height: 100vh
 
 .popup-content 
-    border: 1px solid #888
+    border: 2px solid #666
     background-color: rgba(238, 238, 238, 0.98)
     margin: auto
     width: 80%
@@ -70,7 +71,7 @@ body
     min-height: 200px
     border-radius: 20px
     text-align: center
-    padding: 50px 40px 40px
+    padding: 50px
 
     button
         background-color: transparent
@@ -108,9 +109,7 @@ body
         color: #888
 
 .InputPopUp
-    vertical-align: middle
     padding-top: 50px
-    margin-top: 10vh
     position: relative
     font-size: 15rem
 
@@ -122,6 +121,9 @@ body
         right: 25px
         top: 5px
 
+    .ConfirmBlock 
+        padding: 20px 40px
+        text-align: left
 
 .bar
     border-radius: 70px
@@ -206,9 +208,10 @@ h3
         padding: 100px 0 200px
 
     .ServiceCards
-        padding: 100px 10% 0
+        padding: 100px 20% 0
         flex-wrap: wrap
         +media(1400)
+            padding: 100px 10% 0
             flex-wrap: nowrap
 
         .card
@@ -506,11 +509,14 @@ h3
 
     
 .Partners
-    padding: 150rem 0
+    padding: 150rem 
+    transition: height 1s ease-in-out
     +media(430)
-        padding: 170px 0
+        padding: 170px 
     background-color: #f8f8f8
-    
+    &-images
+        overflow: hidden
+
     div
         margin: 0 auto
         flex-wrap: wrap
@@ -520,15 +526,18 @@ h3
         +media(1300)
             flex-wrap: nowrap
 
+    .Partners-images
+        height: 60px
+
     .Partners-text
         padding: 70px 0 0
         +media(1300)
-            padding: 20px 100px 0
+            padding: 50px 100px 0
 
     img
         display: inline-block
         transition: all 0.5s ease-in-out
-        margin: 0 50px
+        // margin: 0 50px
         height: 60px
         width: 20%
         object-fit: contain
@@ -547,7 +556,7 @@ h3
 
     .QuoteAuthor
         margin: 40px 0 50px
-        font-size: 24rem
+        font-size: 19rem
         font-style: normal
 
     .dots
@@ -593,12 +602,13 @@ h3
         text-align: left
         display: inline-block
         display: flex
-        justify-content: flex-start
         flex-direction: row
         flex-wrap: wrap
         width: 100%
+        justify-content: center
         +media(1320)
             width: 30%
+            justify-content: flex-start
             flex-direction: column
 
         div
@@ -654,6 +664,15 @@ h3
                     margin-top: 45px
                     margin-left: 40px
 
+        label
+            width: 100%
+            border: none
+            position: relative
+            margin: 10px 0
+            +media(770)
+                margin: 20px 30px
+                width: calc( 50% - 60px )
+
         input,
         textarea
             border: 1.5px solid #555
@@ -665,15 +684,25 @@ h3
             box-sizing: border-box
             background-color: transparent
             width: 100%
-            margin: 10px 0
             padding: 15px 15px
             +media(770)
-                margin: 20px 30px
                 padding: 25px 35px
-                width: calc( 50% - 60px )
+
+            &:focus
+                border: 1px solid #a02616
+                background-color: transparentize(#a02616, 0.98)
+
+        .errortext
+            position: absolute
+            top: -25px
+            left: 10px
+            color: red
+            font-size: 15px
 
         textarea
             overflow-y: scroll
             width: 100%
+            margin: 10px 0
             +media(770)
+                margin: 20px 30px
                 width: calc( 100% - 60px )

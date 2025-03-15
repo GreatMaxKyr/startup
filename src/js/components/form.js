@@ -18,21 +18,122 @@ inputsFeed.forEach(input => {
     }
 })
 
+function validateFields() {
+    let trig = true
+
+    inputsFeed.forEach(element => {
+        let pattern = /^([A-Za-zА-Яа-я0-9 -!]+)$/gi
+        if(element.name =="e-mail"){
+            pattern = /(\w+)@(\w+)\.(\w+)/gi
+
+            // if (!pattern.test(element.value)){
+            //     element.focus();
+
+            //     let errorMessage = document.createElement("p")
+            //     errorMessage.classList.add("errortext")
+            //     errorMessage.innerText = "Invalid email" 
+            //     element.insertAdjacentElement("beforebegin", errorMessage)
+            //     element.style.position = "relative"
+
+            //     trig = false
+            // } else {
+            //     if (element.previousElementSibling) {
+            //         element.previousElementSibling.remove()
+            //     }
+            // }
+        }
+
+        if (!pattern.test(element.value)){
+            element.focus();
+
+            let errorMessage = document.createElement("p")
+            errorMessage.classList.add("errortext")
+            errorMessage.innerText = "Invalid " + element.name
+            element.insertAdjacentElement("beforebegin", errorMessage)
+            element.style.position = "relative"
+
+            trig = false
+        } else {
+            if (element.previousElementSibling) {
+                element.previousElementSibling.remove()
+            }
+        }
+
+    })
+
+    return trig
+}
+
 SendMessage.onclick = (event) => {
     event.preventDefault()
-    localStorage.message = InputsTextarea.ariaValueMax
-    inputsFeed.forEach(input => {
-        if (input.type != "submit") {
-            localStorage.setItem(input.name, input.value)
+    if (validateFields()) {
+        localStorage.message = InputsTextarea.ariaValueMax
+        inputsFeed.forEach(input => {
+            if (input.type != "submit") {
+                localStorage.setItem(input.name, input.value)
+            }
+            localStorage.setItem(InputsTextarea.name, InputsTextarea.value)
+        });
+
+        InputPopup.style.display = 'block'
+        body.style.overflowY = 'hidden'
+        InputPopup.style.background = 'rgba(0, 0, 0, 0.5)'
+        // InputPopup.style.backdropFilter = 'blur(5px)'
+        // InputPopup.style.webkitBackdropFilter = 'blur(5px)'
+        TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+        let ConfirmBlock = document.querySelector(".ConfirmBlock")
+        ConfirmBlock.innerHTML = ""
+        inputsFeed.forEach(element => {
+            if (element.type != "submit") {
+                let confirmMessage = document.createElement("p")
+                confirmMessage.innerHTML = "<strong>your " + element.name + ": </strong>" + element.value
+                ConfirmBlock.appendChild(confirmMessage)
+            }
+        });
+
+        let confirmMessageTextArea = document.createElement("p")
+
+        let ConfirmStrong = document.createElement("strong")
+        ConfirmStrong.innerText = "message: "
+
+        let TextAreaSeeMore = document.createElement("a")
+        TextAreaSeeMore.innerText = " ... show more"
+        TextAreaSeeMore.classList.add("TextAreaSeeMore")
+        TextAreaSeeMore.style.textDecoration = "none"
+        TextAreaSeeMore.href = "#"
+
+        confirmMessageTextArea.innerText = InputsTextarea.value
+        confirmMessageTextArea.insertAdjacentElement("afterbegin", ConfirmStrong)
+
+        if (InputsTextarea.value.length >= 100) {
+            confirmMessageTextArea.innerText = InputsTextarea.value.substring(0, 100)
+            confirmMessageTextArea.insertAdjacentElement("afterbegin", ConfirmStrong)
+            confirmMessageTextArea.insertAdjacentElement("beforeend", TextAreaSeeMore)
+
+            TextAreaSeeMore.setAttribute("isopened", false)
+            if (TextAreaSeeMore) {
+                TextAreaSeeMore.onclick = function(elem)  {
+                    elem.preventDefault()
+                    
+                    if (TextAreaSeeMore.isopened == false) {
+                        confirmMessageTextArea.innerText = InputsTextarea.value.substring(0, 100)
+                        TextAreaSeeMore.innerText = " ... show more"
+                        TextAreaSeeMore.style.color = "#0D6EFD"
+                    } else {
+                        confirmMessageTextArea.innerText = InputsTextarea.value
+                        TextAreaSeeMore.innerText = " ... hide text"
+                        TextAreaSeeMore.style.color = "#c0301c"
+                    }
+
+                    confirmMessageTextArea.insertAdjacentElement("afterbegin", ConfirmStrong)
+                    confirmMessageTextArea.insertAdjacentElement("beforeend", TextAreaSeeMore)
+                    TextAreaSeeMore.isopened = !(TextAreaSeeMore.isopened)
+                }
+            }
         }
-        localStorage.setItem(InputsTextarea.name, InputsTextarea.value)
-    });
-    InputPopup.style.display = 'block'
-    body.style.overflowY = 'hidden'
-    InputPopup.style.background = 'rgba(0, 0, 0, 0.3)'
-    InputPopup.style.backdropFilter = 'blur(5px)'
-    InputPopup.style.webkitBackdropFilter = 'blur(5px)'
-    TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        ConfirmBlock.appendChild(confirmMessageTextArea)
+    }
 }
 
 document.querySelector(".DoYouGetInTouch").onclick = () => {

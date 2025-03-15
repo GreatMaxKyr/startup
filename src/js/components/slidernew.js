@@ -1,31 +1,37 @@
 class Slider {
+    heightProportion = 580 / 338
+    // heightProportion = 480 / 338
     constructor(sliderInterval) {
         this.sliderInterval = sliderInterval;
         this.currentIndex = 0;
-        this.MaxCardWidth = 420;
+        // this.MaxCardWidth = 420;
         this.MinCardWidth = 320;
-        this.ResizeByGap = false;
+        this.ResizeByGap = false; 
+        //Ця функція відповідає за те, як в нас буде змінюватись слайдер при ресайзі
+        //якщо false, то ширина карточок фіксована, а відстань змінюється
+        //якщо true, то навпаки, ширина карточок змінюється відстань фіксована
         this.MaxCardDistance = 50;
-        this.truecardcount = 0
+        this.totalCardCount = 0;
     }
 
     init(sliderSelector, slideSelector) {
         this.slider = document.querySelector(sliderSelector); //slider is parent of all cards
         this.slides = Array.from(document.querySelectorAll(slideSelector)); //cards that move around
-        this.truecardcount = this.slides.length;
-        let SliderHeight = this.slider.getBoundingClientRect().height + 30;
+        this.totalCardCount = this.slides.length;
         this.sliderCardDistance = 140;
-
+        
+        
+        this.setLayout();
+        let SliderHeight = this.slider.getBoundingClientRect().height + 80;
         this.slides.forEach(element => {
             element.style.position = "absolute"
         });
-
-        this.setLayout();
         this.setSlidePositionRight();
         this.runShift();
-        // window.onresize = this.setLayout.bind(this);
+        
         
         this.slider.style.minHeight = SliderHeight + "px"
+
 
         this.slider.ontouchstart = (event) => {
             this.touchX = event.touches[0].pageX
@@ -40,6 +46,10 @@ class Slider {
                 this.slideRight(1)
             }
         }
+    }
+
+    setResizeRuleByGap(argument) {
+        this.ResizeByGap = argument
     }
     
     setSlidePosition(shiftCount) {
@@ -57,43 +67,52 @@ class Slider {
     }
 
     setLayout() {
-        this.cardWidth = this.slides[0].getBoundingClientRect().width; //get width of a card
-        this.sliderWidth = this.slider.getBoundingClientRect().width; //get full width of card parent
-        this.visibleCardsCount = Math.floor(this.sliderWidth / (this.MinCardWidth + 10)); // how many cards visible
+        this.cardWidth = this.slides[0].getBoundingClientRect().width //get width of a card
+        this.sliderWidth = this.slider.getBoundingClientRect().width //get full width of card parent
+        this.visibleCardsCount = Math.floor(this.sliderWidth / (this.cardWidth + 10)) // how many cards visible
+        console.log(this.visibleCardsCount, "👷visible c")
         
-        if (this.visibleCardsCount > 1) {
-            if (this.sliderWidth > this.cardWidth * this.slides.length) {
+        if (this.visibleCardsCount > 1) { 
+            if (this.sliderWidth > (this.cardWidth + 10) * this.slides.length) {  //if they all fit
                 if (this.ResizeByGap) {
                    this.sliderCardDistance = (this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount - 1)
-                } else {
+                } else { //we use this
+                    if (this.totalCardCount <= this.visibleCardsCount) {
+                        this.cardWidth = (this.sliderWidth - this.MaxCardDistance * (this.totalCardCount - 1)) / this.totalCardCount //if there are more cards available to fit than max
+                    } else {
+                        this.cardWidth = (this.sliderWidth - this.MaxCardDistance * (this.visibleCardsCount - 1)) / this.visibleCardsCount
+                    }
                     this.sliderCardDistance = this.MaxCardDistance
                     this.slides.forEach(element => {
-                        this.cardWidth = (this.sliderWidth - this.MaxCardDistance*(this.visibleCardsCount - 1))/this.visibleCardsCount
                         element.style.width = this.cardWidth +"px"
+                        element.style.height = this.cardWidth * this.heightProportion +"px"
+
                     });
                 }
             } else {
                this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
             }
-        } else {
-            this.sliderCardDistance = 0
+        } else { //only one card is visible, fully works dot touch
+            this.sliderCardDistance = 50
             this.cardWidth = this.slider.getBoundingClientRect().width
-            console.log(this.cardWidth)
             
             this.slides.forEach(element => {
                 element.style.width = this.cardWidth + "px"
             });
         }
+        this.slider.style.height = this.cardWidth * this.heightProportion + "px"
     }
 
     runShift() {
         this.timer = setInterval(() => {
             this.slideCards()
+            this.trigger()
         }, this.sliderInterval)
     }
     runShiftRight() {
         this.timer = setInterval(() => {
             this.slideCardsRight()
+            this.trigger()
         }, this.sliderInterval)
     }
 
@@ -190,63 +209,77 @@ class Slider {
 
 
 class Carousel extends Slider {
+    isclicked = true
 
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
-            this.slideLeft(3)
-            // this.slide3cardsleft()
-        };
+            if (this.isclicked) {
+                this.stopShift()
+                this.isclicked = false
+
+                if (this.visibleCardsCount > 2) {
+                    this.slide3cardsleft() //+
+                } else {
+                    this.slideLeft() //+
+                }
+                
+                setTimeout(() => {
+                    this.isclicked = true
+                    this.runShift()
+                }, 650)
+            }
+        }
     }
     
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
-            this.slideRight(3)
-            // this.slide3cards()
-        };
-    }
-
-
-    slideLeft(ShiftNumber) {
-        this.stopShift()
-        for (let i = 0; i < ShiftNumber; i++) {
-            setTimeout(() => {
-                this.slideCards(ShiftNumber)
-            }, 110 * i);
-        }
-        if (!this.isclicked) {
-            setTimeout(() => {
-                this.runShift()
+            if (this.isclicked) {
+                this.stopShift()
                 this.isclicked = false
-            }, this.sliderInterval);
+
+                if (this.visibleCardsCount > 2) {
+                    this.slide3cards() //+
+                } else {
+                    this.slideRight() //+
+                }
+                
+                setTimeout(() => {
+                    this.isclicked = true
+                    this.runShift()
+                }, 650)
+            }
         }
-        this.isclicked = true
-    }
-    
-    slideRight(ShiftNumber) {
-        this.stopShift();
-        for (let i = 0; i < ShiftNumber; i++) { //slide crads right ()
-            setTimeout(() => {
-                this.slideCardsRight();
-            }, 110 * i);
-        }
-        if (!this.isclicked) {
-            setTimeout(() => {
-                this.runShiftRight()
-                this.isclicked = false
-            }, this.sliderInterval);
-        }
-        this.isclicked = true
     }
 
-    isclicked = false
+
+    // slideLeft(ShiftNumber) {
+    //     for (let i = 0; i < ShiftNumber; i++) {
+    //         setTimeout(() => {
+    //             this.slideCards()
+    //         }, 110 * i);
+    //     }
+    // }
+
+    slideLeft() {
+        setTimeout(() => {
+            this.slideCards()
+        }, 110)
+    }
+    slideRight() {
+        setTimeout(() => {
+            this.slideCardsRight();
+        }, 110)
+    }
 }
 
 class BrandSlider extends Slider {
     constructor(setTime) {
         super(setTime)
     }
+    heightProportion = 60 / 275
+    
 
     activeDot = 2
     activeQuote  = 2
@@ -264,8 +297,8 @@ class BrandSlider extends Slider {
     
     trigger() {
         this.dotElement[this.activeDot].classList.remove("activeDot")
-        this.dotElement[this.activeDot].classList.add("activeDot")
         this.activeDot = (this.activeDot == this.dotElement.length-1)?0:++this.activeDot
+        this.dotElement[this.activeDot].classList.add("activeDot")
         
         this.activeQuote = (this.activeQuote == this.quoteContainer.length-1)?0:++this.activeQuote
         this.QuoteText.innerText = this.quoteContainer[this.activeQuote].text
@@ -278,12 +311,18 @@ class BrandSlider extends Slider {
 let mySLider = new Carousel(5000);
 mySLider.setLeftButton(".slideLeft")
 mySLider.setRightButton(".slideRight")
+mySLider.setResizeRuleByGap(false)
 mySLider.init(".AboutPhotos", ".AboutPhotosPeopleBlocks");
 
 
-let myBrandSlider = new BrandSlider(3000);
-myBrandSlider.init(".Partners-images",".Partners-images img");
+
+// function screenSize() {
+//     if (window.innerWidth <= 1300) {
+//     }
+// }
+let myBrandSlider = new BrandSlider(3000)
 myBrandSlider.setDots(".dot-selection")
+myBrandSlider.init(".Partners-images",".Partners-images img")
 
 
 
@@ -321,5 +360,5 @@ let quotes = [
 myBrandSlider.setQuote(quotes)
 window.onresize = () => {
     mySLider.setLayout() 
-    myBrandSlider.setLayout()
+    // myBrandSlider.setLayout()
 }
