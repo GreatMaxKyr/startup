@@ -83,8 +83,8 @@ class Slider {
         
         this.visibleCardsCount = Math.floor(this.sliderWidth / (this.cardWidth + 10)) // how many cards visible
 
-        console.log(this.visibleCardsCount, "👷visible c")
-        console.log(this.totalCardCount, "😔 totalCardCount")
+        // console.log(this.visibleCardsCount, "👷visible c")
+        // console.log(this.totalCardCount, "😔 totalCardCount")
         
         if (this.visibleCardsCount > 1) { 
             if (this.sliderWidth > (this.cardWidth + 10) * this.slides.length) {  //if they all fit
@@ -99,8 +99,8 @@ class Slider {
                     this.sliderCardDistance = this.MaxCardDistance
                 }
             } else {
-                console.log(this.cardWidth, "⚠️cardWidth")        
                 this.cardWidth = (this.sliderWidth - this.MaxCardDistance * (this.visibleCardsCount - 1)) / this.visibleCardsCount
+                // console.log(this.cardWidth, "⚠️cardWidth")        
                 // this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
             }
         } else { //only one card is visible, fully works dot touch

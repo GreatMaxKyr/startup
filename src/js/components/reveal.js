@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (elementTop < windowHeight - 100) {
             element.classList.add("visible")
-        } else {
-            element.classList.remove("visible")
-        }
+        } 
+        // else {
+        //     element.classList.remove("visible")
+        // }
         })
     }
 
@@ -23,22 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     reveal()
 })  
 
-window.addEventListener('wheel', function(event) {
+window.addEventListener('scroll', function(event) {
     let scrollTop = window.scrollY
-    let ScrolDY = event.deltaY
 
     RevealAvoid.forEach(element => {
         element.classList.remove("reveal")
         element.classList.add("visible")
-        element.querySelectorAll("*").forEach(child => {
-            child.classList.remove("reveal");
-            child.classList.add("visible");
-        });
-    });
+        // element.querySelectorAll("*").forEach(child => {
+        //     child.classList.remove("reveal");
+        //     child.classList.add("visible");
+        // });
+    })
 
-    if (ScrolDY < 0) {
+
+
+    if (lastScrollTop > scrollTop) {
         headerLinks.style.marginTop = '0'
-    } else if( ScrolDY > 0) {
+    } else {
         headerLinks.style.marginTop = '-200px'
     }
     

@@ -678,7 +678,7 @@ h3
             box-sizing: border-box
             background-color: transparent
             width: 100%
-            padding: 15px 15px
+            padding: 20px 15px
             +media(770)
                 padding: 25px 35px
 
@@ -688,10 +688,12 @@ h3
 
         .errortext
             position: absolute
-            top: -25px
             left: 10px
             color: red
             font-size: 15px
+            top: -5px
+            +media(770)
+                top: -25px
 
         textarea
             overflow-y: scroll

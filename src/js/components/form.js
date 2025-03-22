@@ -48,6 +48,7 @@ function validateFields() {
 
             let errorMessage = document.createElement("p")
             errorMessage.classList.add("errortext")
+            element.style.marginTop = "20px"
             errorMessage.innerText = "Invalid " + element.name
             element.insertAdjacentElement("beforebegin", errorMessage)
             element.style.position = "relative"

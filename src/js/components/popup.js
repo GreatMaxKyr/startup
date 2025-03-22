@@ -46,7 +46,7 @@ function stopMove() {
         WelcomeStartup.innerText = "welcome " + EnterName.value
       }
       
-      MessageOutPut.innerText = "Your login was successful! You can countinue on browsing."
+      MessageOutPut.innerText = "Your login was successful!"
       toast.classList.add("text-info-emphasis", "bg-info-subtle", "border", "border-info-subtle")
       toast.style.opacity = "100%"
       
