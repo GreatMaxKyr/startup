@@ -6,7 +6,6 @@
 @import components/main
 @import components/footer
 
-
 html
     font-size: 0.7px
     +media(450)
@@ -23,12 +22,12 @@ body
     backdrop-filter: invert(1)
 
 .reveal
-  opacity: 0
-  filter: blur(10px)
-  transform: translateY(20px)
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s, margin-top 0.5s ease, background-color 0.5s ease, color 0.5s ease-out
+    opacity: 0
+    filter: blur(10px)
+    transform: translateY(20px)
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s, margin-top 0.5s ease, background-color 0.5s ease, color 0.5s ease-out
 
-.reveal.visible 
+.reveal.visible
     opacity: 1
     filter: blur(0)
     transform: translateY(0)
@@ -51,8 +50,7 @@ body
     strong
         font-size: 25rem
 
-    
-.popup 
+.popup
     display: none
     position: fixed
     z-index: 1
@@ -62,7 +60,7 @@ body
     width: 100%
     height: 100vh
 
-.popup-content 
+.popup-content
     border: 2px solid #666
     background-color: rgba(238, 238, 238, 0.98)
     margin: auto
@@ -82,7 +80,7 @@ body
     span
         position: absolute
 
-.popup-content input 
+.popup-content input
     border-radius: 25px
     font-size: 16rem
     font-weight: 700
@@ -102,10 +100,10 @@ body
     color: #aaa
     font-size: 40rem
     font-weight: bold
-    z-index: 5  
+    z-index: 5
     cursor: pointer
 
-    &:hover 
+    &:hover
         color: #888
 
 .InputPopUp
@@ -121,13 +119,13 @@ body
         right: 25px
         top: 5px
 
-    .ConfirmBlock 
+    .ConfirmBlock
         padding: 20px 40px
         text-align: left
 
 .bar
     border-radius: 70px
-    background-color: #ccc    
+    background-color: #ccc
     position: relative
     border: 2px solid #aaa
     box-sizing: border-box
@@ -219,8 +217,8 @@ h3
             padding-bottom: 100px
             +media(1400)
                 padding-bottom: 0
-            
-            .IconFrame 
+
+            .IconFrame
                 width: 100rem
                 height: 100rem
                 border-radius: 50%
@@ -233,10 +231,10 @@ h3
             .SupportIcon
                 background-repeat: no-repeat
                 background-position: center
-                background-size: 50rem 
+                background-size: 50rem
 
             .filledFrame
-                background-size: 45rem 
+                background-size: 45rem
                 border: 1.5px solid #c0301c
                 background-color: #c0301c
                 background-image: url(../img/fa-font.png)
@@ -275,17 +273,17 @@ h3
         padding-bottom: 50rem
         white-space: nowrap
         overflow-x: scroll
-        &::-webkit-scrollbar 
+        &::-webkit-scrollbar
             display: none
 
         a
             text-decoration: none
             color: #555
             padding: 15px
-            
+
             &:hover
                 color: #464545
-        
+
         .SelectedFilter
             font-weight: 600
             color: #c0301c
@@ -293,8 +291,7 @@ h3
 
             &:hover
                 color: #a92918
-            
-        
+
     .WorkPicturesBlock
         margin-top: 100px
         display: flex
@@ -309,7 +306,7 @@ h3
 
         .WorkPicturesContainer
             position: relative
-            aspect-ratio: 1 / 1 
+            aspect-ratio: 1 / 1
             margin: 1%
             width: 44%
             +media(768)
@@ -320,13 +317,13 @@ h3
             &:hover
                 background-color: #c0301c
 
-            &:hover .WorkPictures 
+            &:hover .WorkPictures
                 opacity: 0.3
 
-            &:hover .middle 
+            &:hover .middle
                 opacity: 1
 
-            .middle 
+            .middle
                 transition: .5s ease
                 opacity: 0
                 position: absolute
@@ -336,7 +333,7 @@ h3
                 color: #fff
                 text-align: center
 
-                a 
+                a
                     text-transform: uppercase
                     color: transparentize(#c0301c, 0.1)
                     font-size: 14rem
@@ -363,7 +360,7 @@ h3
                     &::after
                         transform: rotate(-45deg)
                         top: 20.5px
-                
+
                 p
                     margin-bottom: 40px
                     font-size: 14rem
@@ -372,7 +369,6 @@ h3
                         font-size: 18rem
                         margin-bottom: 20px
                         font-weight: 600
-                        
 
             .WorkPictures
                 object-fit: cover
@@ -386,7 +382,7 @@ h3
     padding: 160px 0 175px
     text-align: center
     background-image: url(../img/TalkPic.png)
-    background-size: cover 
+    background-size: cover
     background-repeat: no-repeat
     color: #fff
     font-family: "Roboto Slab"
@@ -399,7 +395,7 @@ h3
             font-size: 35rem
         +media(450)
             font-size: 40rem
-    
+
     .PAMargin
         margin: 0 0 90px
         +media(550)
@@ -428,9 +424,9 @@ h3
                 flex-direction: row
 
             .BlockRight
-                width: 100% 
+                width: 100%
                 +media(1300)
-                    width: 40% 
+                    width: 40%
 
             img
                 width: 100%
@@ -447,11 +443,11 @@ h3
 
             .BlockLeft
                 text-align: left
-                padding:  0 0 50px
-                width: 100% 
+                padding: 0 0 50px
+                width: 100%
                 +media(1300)
-                    width: 60% 
-                    padding:  0 0 110px 60px 
+                    width: 60%
+                    padding: 0 0 110px 60px
 
                 .BlogBlock
 
@@ -481,7 +477,7 @@ h3
                         p
                             font-style: italic
                             padding-top: 10px
-                
+
                 .BlogBlockText
                     font-family: "Roboto Slab"
 
@@ -507,43 +503,41 @@ h3
                     color: #c0301c
                     text-decoration: underline
 
-    
 .Partners
-    padding: 150rem 
-    transition: height 1s ease-in-out
-    +media(430)
-        padding: 170px 
+    // transition: height 1s ease-in-out
+    padding: 170px 0
     background-color: #f8f8f8
     &-images
         overflow: hidden
 
     div
         margin: 0 auto
-        flex-wrap: wrap
         width: 85%
         +media(550)
+            width: 75%
+        +media(900)
             width: 55%
-        +media(1300)
-            flex-wrap: nowrap
-
-    .Partners-images
-        height: 60px
 
     .Partners-text
-        padding: 70px 0 0
-        +media(1300)
-            padding: 50px 100px 0
+        padding: 20px 0 0
+        +media(550)
+            width: 55%
+        +media(900)
+            width: 35%
+
+    .Partners-images
+        // height: 60px
 
     img
         display: inline-block
         transition: all 0.5s ease-in-out
-        // margin: 0 50px
-        height: 60px
-        width: 20%
+        width: 150px
         object-fit: contain
-        +media(1300)
-            margin: 0
-            padding: 0 20px
+        // height: 60px
+        // margin: 0 50px
+        // +media(1300)
+        //     margin: 0
+        //     padding: 0 20px
 
     p
         font-size: 18rem
@@ -569,13 +563,14 @@ h3
             border-radius: 50%
             border: 1px solid #bdbdbd
             background-color: #ddd
-            &:hover
-                background-color: #cacaca
             width: 12px
             height: 12px
             +media(430)
-                width: 20rem
-                height: 20rem
+                width: 17rem
+                height: 17rem
+
+            &:hover
+                background-color: #cacaca
 
         .activeDot
             border: 1px solid #a02616
@@ -595,9 +590,8 @@ h3
         flex-direction: column
         +media(1320)
             flex-direction: row
-        
-            
-    .PersonalInfoBlock 
+
+    .PersonalInfoBlock
         padding-top: 45px
         text-align: left
         display: inline-block

@@ -37,12 +37,10 @@
             position: absolute
             width: 45rem
             height: 45rem
-            top: 50%          //change
             z-index: 5
             transition: transform 0.2s ease, background-color 0.2s ease
-
-            &:hover
-                transform: scale(1.1)
+            top: 50%
+            transform: translate(0, calc(-50% - 40px))
 
         .slideLeft path,.slideRight path
             transform: translate(-2px,-2px)
@@ -98,10 +96,16 @@
                     object-fit: contain
 
             h4
-                font-size: 18rem
+                // font-size: 18rem
                 padding-top: 30rem
+                font-size: calc(clamp(12px, 2vw, 24px) * 1.5)
+                +media(768)
+                    font-size: calc(clamp(12px, 2vw, 24px) * 0.85)
 
             p
-                font-size: 18rem
+                // font-size: 18rem
                 font-weight: 400
                 font-family: "Roboto Slab"
+                font-size: calc(clamp(12px, 2vw, 24px) * 1.4)
+                +media(768)
+                    font-size: calc(clamp(12px, 2vw, 24px) * 0.75)

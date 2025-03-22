@@ -1,6 +1,8 @@
 class Slider {
     heightProportion = 580 / 338
     // heightProportion = 480 / 338
+
+
     constructor(sliderInterval) {
         this.sliderInterval = sliderInterval;
         this.currentIndex = 0;
@@ -10,19 +12,24 @@ class Slider {
         //Ця функція відповідає за те, як в нас буде змінюватись слайдер при ресайзі
         //якщо false, то ширина карточок фіксована, а відстань змінюється
         //якщо true, то навпаки, ширина карточок змінюється відстань фіксована
-        this.MaxCardDistance = 50;
+        this.MaxCardDistance = 30;
         this.totalCardCount = 0;
     }
 
+
     init(sliderSelector, slideSelector) {
-        this.slider = document.querySelector(sliderSelector); //slider is parent of all cards
-        this.slides = Array.from(document.querySelectorAll(slideSelector)); //cards that move around
-        this.totalCardCount = this.slides.length;
-        this.sliderCardDistance = 140;
+        this.slider = document.querySelector(sliderSelector); //slider is parent of all cards //Контейнер
+        this.slides = Array.from(document.querySelectorAll(slideSelector)); //cards that move around // Слайди
+        this.totalCardCount = this.slides.length; // Скільки іх (карточок) всього в масиві
+        this.sliderCardDistance =  40; // Дистанція між картками
         
+        this.defaultCardWidth = this.slides[0].getBoundingClientRect().width
         
-        this.setLayout();
-        let SliderHeight = this.slider.getBoundingClientRect().height + 80;
+        this.setLayout(); // Зробити розстановку карточок 
+
+        let SliderHeight = this.slider.getBoundingClientRect().height + 40;
+
+
         this.slides.forEach(element => {
             element.style.position = "absolute"
         });
@@ -48,6 +55,10 @@ class Slider {
         }
     }
 
+    setDefaultCardWidth(defaultCardWidth){
+        this.defaultCardWidth = defaultCardWidth
+    }
+
     setResizeRuleByGap(argument) {
         this.ResizeByGap = argument
     }
@@ -67,10 +78,13 @@ class Slider {
     }
 
     setLayout() {
-        this.cardWidth = this.slides[0].getBoundingClientRect().width //get width of a card
+        this.cardWidth = this.defaultCardWidth //get width of a card
         this.sliderWidth = this.slider.getBoundingClientRect().width //get full width of card parent
+        
         this.visibleCardsCount = Math.floor(this.sliderWidth / (this.cardWidth + 10)) // how many cards visible
+
         console.log(this.visibleCardsCount, "👷visible c")
+        console.log(this.totalCardCount, "😔 totalCardCount")
         
         if (this.visibleCardsCount > 1) { 
             if (this.sliderWidth > (this.cardWidth + 10) * this.slides.length) {  //if they all fit
@@ -83,14 +97,11 @@ class Slider {
                         this.cardWidth = (this.sliderWidth - this.MaxCardDistance * (this.visibleCardsCount - 1)) / this.visibleCardsCount
                     }
                     this.sliderCardDistance = this.MaxCardDistance
-                    this.slides.forEach(element => {
-                        element.style.width = this.cardWidth +"px"
-                        element.style.height = this.cardWidth * this.heightProportion +"px"
-
-                    });
                 }
             } else {
-               this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
+                console.log(this.cardWidth, "⚠️cardWidth")        
+                this.cardWidth = (this.sliderWidth - this.MaxCardDistance * (this.visibleCardsCount - 1)) / this.visibleCardsCount
+                // this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
             }
         } else { //only one card is visible, fully works dot touch
             this.sliderCardDistance = 50
@@ -100,6 +111,12 @@ class Slider {
                 element.style.width = this.cardWidth + "px"
             });
         }
+
+        this.slides.forEach(element => {
+            element.style.width = this.cardWidth +"px"
+            element.style.height = this.cardWidth * this.heightProportion +"px"
+        });
+
         this.slider.style.height = this.cardWidth * this.heightProportion + "px"
     }
 
@@ -360,5 +377,7 @@ let quotes = [
 myBrandSlider.setQuote(quotes)
 window.onresize = () => {
     mySLider.setLayout() 
-    // myBrandSlider.setLayout()
+    mySLider.setSlidePositionRight() 
+    myBrandSlider.setLayout()
+    myBrandSlider.setSlidePositionRight() 
 }
