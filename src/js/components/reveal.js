@@ -1,42 +1,34 @@
-let RevealAvoid = document.querySelectorAll(".RevealAvoid")
+let RevealMe = document.querySelectorAll(".RevealMe")
+let lastScrollTop = 100
 
-document.addEventListener("DOMContentLoaded", () => {
-    const elements = document.querySelectorAll("div, p, img, section")
+let headerLinks = document.querySelector(".HeaderLinks")
+let headerLinksA = document.querySelectorAll(".HeaderLinksA")
+let HeaderImage = document.querySelector("header")
 
-    function reveal() {
-        const windowHeight = window.innerHeight
-        elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top
 
-        if (elementTop < windowHeight - 100) {
-            element.classList.add("visible")
-        } 
-        // else {
-        //     element.classList.remove("visible")
-        // }
-        })
-    }
-
-    elements.forEach(element => element.classList.add('reveal'))
-
-    window.addEventListener("scroll", reveal)
-
-    reveal()
-})  
+const elements = document.querySelectorAll('.RevealMe')
+// elements.forEach(object => {
+//     object.style.opacity = '0.33'
+//     object.style.filter = 'blur(5px)'
+// })
 
 window.addEventListener('scroll', function(event) {
     let scrollTop = window.scrollY
+    const windowHeight = window.innerHeight
+    
+    elements.forEach(e => {
+        const elementTop = e.getBoundingClientRect().top
+        if (elementTop - windowHeight + 480 < window.scrollY) {
+            e.classList.add("Revealed")
+            
+            setTimeout(() => {
+                e.classList.remove("RevealMe")
+                e.classList.remove("Revealed")
+            }, 1000)
 
-    RevealAvoid.forEach(element => {
-        element.classList.remove("reveal")
-        element.classList.add("visible")
-        // element.querySelectorAll("*").forEach(child => {
-        //     child.classList.remove("reveal");
-        //     child.classList.add("visible");
-        // });
+            console.log("Revealing ", e)
+        }
     })
-
-
 
     if (lastScrollTop > scrollTop) {
         headerLinks.style.marginTop = '0'
@@ -44,12 +36,12 @@ window.addEventListener('scroll', function(event) {
         headerLinks.style.marginTop = '-200px'
     }
     
-    if (scrollTop < HeaderImg.getBoundingClientRect().height) {
+    if (scrollTop < HeaderImage.getBoundingClientRect().height) {
         headerLinks.style.backgroundColor = 'rgba(192, 48, 28, 0)'
     } else {
         headerLinks.style.backgroundColor = 'rgba(192, 48, 28, 0.95)'
         headerLinks.style.color = '#fff'
-        headerLinksA.forEach(function(link) {
+        headerLinksA.forEach(function(link) { //make this a style
             link.style.color = '#fff'
         })
     }

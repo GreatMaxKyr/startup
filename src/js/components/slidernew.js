@@ -7,7 +7,7 @@ class Slider {
         this.sliderInterval = sliderInterval;
         this.currentIndex = 0;
         // this.MaxCardWidth = 420;
-        this.MinCardWidth = 320;
+        this.MinCardWidth = 180;
         this.ResizeByGap = false; 
         //Ця функція відповідає за те, як в нас буде змінюватись слайдер при ресайзі
         //якщо false, то ширина карточок фіксована, а відстань змінюється
@@ -22,8 +22,10 @@ class Slider {
         this.slides = Array.from(document.querySelectorAll(slideSelector)); //cards that move around // Слайди
         this.totalCardCount = this.slides.length; // Скільки іх (карточок) всього в масиві
         this.sliderCardDistance =  40; // Дистанція між картками
-        
+
         this.defaultCardWidth = this.slides[0].getBoundingClientRect().width
+        
+        if (this.defaultCardWidth < this.MinCardWidth) this.defaultCardWidth = this.MinCardWidth
         
         this.setLayout(); // Зробити розстановку карточок 
 

@@ -40,7 +40,11 @@
             z-index: 5
             transition: transform 0.2s ease, background-color 0.2s ease
             top: 50%
-            transform: translate(0, calc(-50% - 40px))
+            transform: translate(0, calc(-50% - 30px))
+            +media(750)
+                transform: translate(0, -50%)
+            +media(950)
+                transform: translate(0, calc(-50% - 30px))
 
         .slideLeft path,.slideRight path
             transform: translate(-2px,-2px)
@@ -48,10 +52,10 @@
                 transform: translate(0,0)
 
         .slideLeft
-            left: 5px
+            left: 0
 
         .slideRight
-            right: 5px
+            right: 0
 
         .AboutPhotosPeopleBlocks
             transition: all 0.5s ease-in-out
@@ -96,16 +100,14 @@
                     object-fit: contain
 
             h4
-                // font-size: 18rem
                 padding-top: 30rem
-                font-size: calc(clamp(12px, 2vw, 24px) * 1.5)
-                +media(768)
-                    font-size: calc(clamp(12px, 2vw, 24px) * 0.85)
+                font-size: 21rem
+                +media(455)
+                    font-size: 14rem
 
             p
-                // font-size: 18rem
                 font-weight: 400
                 font-family: "Roboto Slab"
-                font-size: calc(clamp(12px, 2vw, 24px) * 1.4)
-                +media(768)
-                    font-size: calc(clamp(12px, 2vw, 24px) * 0.75)
+                font-size: 19rem
+                +media(468)
+                    font-size: 13rem

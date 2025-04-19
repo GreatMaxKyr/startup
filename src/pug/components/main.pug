@@ -1,29 +1,31 @@
 .ServicesBlock#Services
-    h3 Services
-    p.UnderH We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+    .RevealMe
+        h3 Services
+        p.UnderH We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
     .ServiceCards.d-flex.justify-content-around
-        .card
+        .card.RevealMe
             .IconFrame.filledFrame
             .card-body
                 h5.ServiceH Clean Typography 
                 p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
-        .card
+        .card.RevealMe
             .IconFrame.SolidIcon
             .card-body 
                 h5.ServiceH.HackTrigger Rock Solid Code
                 p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
-        .card
+        .card.RevealMe
             .IconFrame.SupportIcon
             .card-body
                 h5.ServiceH Support
                 p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.
 .AboutUsBlock#About
-    h3 About us
-    p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-    .AboutParagraphs.d-flex 
+    .RevealMe
+        h3 About us
+        p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+    .AboutParagraphs.d-flex.RevealMe
         p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
         p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
-    .AboutPhotos.d-flex.justify-content-between.RevealAvoid
+    .AboutPhotos.d-flex.justify-content-between.RevealMe
         span.slideLeft <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect rx="1" and ry="1" width="16rem" height="16rem" fill="#c0301c"/><path d="M11.5 7.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" fill="#ffffff"/></svg>
         span.slideRight <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect rx="1" and ry="1" width="16rem" height="16rem" fill="#c0301c" /><path d="M4.5 7.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" fill="#ffffff"/></svg>
         .AboutPhotosPeopleBlocks
@@ -47,6 +49,13 @@
                     +PeopleSocials()
             h4 Rubel Miah
             p Lead WordPress Developer
+        .AboutPhotosPeopleBlocks
+            div
+                img(src="img/person4.png", alt="")
+                .AboutPhotosSocialBlock
+                    +PeopleSocials()
+            h4 John Doe
+            p Front-end Developer
         //- .AboutPhotosPeopleBlocks
         //-     div
         //-         img(src="img/person5.jpg", alt="")
@@ -68,85 +77,80 @@
         //-             +PeopleSocials()
         //-     h4 Ben Dover
         //-     p Manager
-        .AboutPhotosPeopleBlocks
-            div
-                img(src="img/person4.png", alt="")
-                .AboutPhotosSocialBlock
-                    +PeopleSocials()
-            h4 John Doe
-            p Front-end Developer
 .works#Works
-    h3 Latest Works
-    .WorkLinks.UnderH.FilterButtons
-        a.SelectedFilter(href="#") All
-        a(href="#") Branding
-        a(href="#") Design
-        a(href="#") Development
-        a(href="#") Strategy
-    .WorkPicturesBlock.mt-5.RevealAvoid
-            .WorkPicturesContainer.Branding
+    .RevealMe
+        h3 Latest Works
+        .WorkLinks.UnderH.FilterButtons
+            a.SelectedFilter(href="#") All
+            a(href="#") Branding
+            a(href="#") Design
+            a(href="#") Development
+            a(href="#") Strategy
+    .WorkPicturesBlock.mt-5
+            .WorkPicturesContainer.Branding.RevealMe
                 img.WorkPictures(src="img/WorksHair.png" alt="Work Picture 1")
                 .middle
                     p Hair Dresser
                     p Branding
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Design
+            .WorkPicturesContainer.Design.RevealMe
                 img.WorkPictures(src="img/WorksBird.png" alt="Work Picture 2")
                 .middle
                     p Peace
                     p Design
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Development
+            .WorkPicturesContainer.Development.RevealMe
                 img.WorkPictures(src="img/WorksLaptop.png" alt="Work Picture 3")
                 .middle
                     p Gadgets
                     p Development
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Strategy
+            .WorkPicturesContainer.Strategy.RevealMe
                 img.WorkPictures(src="img/WorksCamera.png" alt="Work Picture 4")
                 .middle
                     p Photo Camera
                     p Strategy
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Branding
+            .WorkPicturesContainer.Branding.RevealMe
                 img.WorkPictures(src="img/WorksBike.png" alt="Work Picture 5")
                 .middle
                     p Bicycle
                     p Branding
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Design
+            .WorkPicturesContainer.Design.RevealMe
                 img.WorkPictures(src="img/WorksNoteBook.png" alt="Work Picture 6")
                 .middle
                     p Notes
                     p Design
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Development
+            .WorkPicturesContainer.Development.RevealMe
                 img.WorkPictures(src="img/WorksLaptopWorkSpace.png" alt="Work Picture 7")
                 .middle
                     p Table
                     p Development
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Strategy
+            .WorkPicturesContainer.Strategy.RevealMe
                 img.WorkPictures(src="img/WorksWorkSpace.png" alt="Work Picture 8")
                 .middle
                     p Stuff
                     p Strategy
                     a.text-uppercase.WorkLink(href="#") View
-            .WorkPicturesContainer.Branding
+            .WorkPicturesContainer.Branding.RevealMe
                 img.WorkPictures(src="img/WorksBook.png" alt="Work Picture 9")
                 .middle
                     p Events
                     p Branding
                     a.text-uppercase.WorkLink(href="#") View
-.GetInTouch 
+.GetInTouch.RevealMe
     p Do you like OUR Work so far?
     p.PAMargin Let's talk about YOUR PROJECTS
     button.CoolA.DoYouGetInTouch(href="#") Get In touch
 .BlogPosts#Blog
-    h3 our recent blog posts
-    p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+    .RevealMe
+        h3 our recent blog posts
+        p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
     .PostsBlock
-        .posts.FirstPost
+        .posts.FirstPost.RevealMe
             .BlockRight 
                 img(src="img/BlogsTable.png", alt="blogs")
             .BlockLeft
@@ -159,7 +163,7 @@
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
                     a.PostReadMore.text-uppercase(href="#") Read more   
 
-        .posts.BlockLeft
+        .posts.BlockLeft.RevealMe
             .BlockRight 
                 img(src="img/WorksWorkSpace.png", alt="blogs")
             .BlockLeft
@@ -172,52 +176,53 @@
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
                     a.text-uppercase.PostReadMore(href="#") Read more         
 .Partners#Partners
-    div.d-flex.Partners-images.justify-content-between
+    div.d-flex.Partners-images.justify-content-between.RevealMe
         img(src="img/deorham.png", alt="partners")
         img(src="img/ratings.png", alt="partners")
         img(src="img/malkmedia.png", alt="partners")
         img(src="img/bcause.png", alt="partners")
         img(src="img/wompify.png", alt="partners")
-    div.Partners-text
+    div.Partners-text.RevealMe
         p.QuoteText Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
         p.QuoteAuthor John Doe, Google Inc.
-    .dots.d-flex.justify-content-around
+    .dots.d-flex.justify-content-around.RevealMe
         p.dot-selection
         p.dot-selection
         p.dot-selection
         p.dot-selection
         p.dot-selection
 .Touch#Contact
-    h3 Get in touch
-    p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+    .RevealMe
+        h3 Get in touch
+        p.UnderH Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
     .TouchBlock
         .PersonalInfoBlock 
-            .Adress
+            .Adress.RevealMe
                 <svg style="vertical-align: middle" xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
                 p.text-uppercase Adress
                 a 312, 7th Ave New York 
                 a NY 101200, United States Of America
-            .Phone
+            .Phone.RevealMe
                 <svg style="vertical-align: middle" xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0L304 0c35.3 0 64 28.7 64 64l0 384c0 35.3-28.7 64-64 64L80 512c-35.3 0-64-28.7-64-64L16 64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64L80 64l0 320 224 0 0-320z"/></svg>
                 p.text-uppercase Hotline(24/7)
                 a(href="tel:650052300") +65 0052 300
                 a(href="tel:8801723511210") +88 01723 511 340
-            .Email
+            .Email.RevealMe
                 <svg style="vertical-align: middle" xmlns="http://www.w3.org/2000/svg" width="30px" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
                 p.text-uppercase E-mail
                 a(href="mailto:shapedtheme@gmail.com") shapedtheme@gmail.com
                 a(href="mailto:khalilkode@gmail.com") khalilkode@gmail.com
         form(action="http://localhost" method="POST").InputsBlock
-            label 
+            label.RevealMe
                 input(name="name", type="text", placeholder="your name") 
-            label 
+            label.RevealMe
                 input(name="e-mail", type="email", placeholder="your e-mail")
-            label 
+            label.RevealMe
                 input(name="subject", type="text", placeholder="your subject") 
-            label 
+            label.RevealMe
                 input(name="company name", type="text", placeholder="your company name") 
-            textarea.InputsTextarea(name="message", rows="5", placeholder="write your message")
-            .SendMessageBlock.d-flex
+            textarea.RevealMe.InputsTextarea(name="message", rows="5", placeholder="write your message")
+            .SendMessageBlock.d-flex.RevealMe
                 input.SendMessage(type="submit" name="messagesend" value="send message")
                 span *We'll reply as soon as possible. We dont reply on Mondays.
     .popup.InputPopup

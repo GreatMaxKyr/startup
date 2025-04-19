@@ -1,9 +1,5 @@
 let headerLinksMenu = document.querySelector('.HeaderLinksMenu')
-let headerLinks = document.querySelector('.HeaderLinks')
-let headerLinksA = document.querySelectorAll('.HeaderLinksA')
-let header = document.querySelector('header')
-let headerBlockHeight = 1300
-let lastScrollTop = 0
+// let headerBlockHeight = 1300
 
 let HamburgerBtn = document.querySelector(".hamburger")
 
