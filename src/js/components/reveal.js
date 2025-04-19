@@ -6,19 +6,19 @@ let headerLinksA = document.querySelectorAll(".HeaderLinksA")
 let HeaderImage = document.querySelector("header")
 
 
-const elements = document.querySelectorAll('.RevealMe')
 // elements.forEach(object => {
-//     object.style.opacity = '0.33'
-//     object.style.filter = 'blur(5px)'
-// })
-
+    //     object.style.opacity = '0.33'
+    //     object.style.filter = 'blur(5px)'
+    // })
+    
 window.addEventListener('scroll', function(event) {
+    const elements = document.querySelectorAll('.RevealMe')
     let scrollTop = window.scrollY
     const windowHeight = window.innerHeight
     
     elements.forEach(e => {
         const elementTop = e.getBoundingClientRect().top
-        if (elementTop - windowHeight + 480 < window.scrollY) {
+        if (elementTop < windowHeight * 0.8) {
             e.classList.add("Revealed")
             
             setTimeout(() => {
@@ -26,7 +26,7 @@ window.addEventListener('scroll', function(event) {
                 e.classList.remove("Revealed")
             }, 1000)
 
-            console.log("Revealing ", e)
+            // console.log("Revealing ", e) 
         }
     })
 

@@ -176,7 +176,7 @@
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
                     a.text-uppercase.PostReadMore(href="#") Read more         
 .Partners#Partners
-    div.d-flex.Partners-images.justify-content-between.RevealMe
+    div.d-flex.Partners-images.justify-content-between.RevealMe.position-relative
         img(src="img/deorham.png", alt="partners")
         img(src="img/ratings.png", alt="partners")
         img(src="img/malkmedia.png", alt="partners")
@@ -186,7 +186,6 @@
         p.QuoteText Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
         p.QuoteAuthor John Doe, Google Inc.
     .dots.d-flex.justify-content-around.RevealMe
-        p.dot-selection
         p.dot-selection
         p.dot-selection
         p.dot-selection
@@ -213,15 +212,16 @@
                 a(href="mailto:shapedtheme@gmail.com") shapedtheme@gmail.com
                 a(href="mailto:khalilkode@gmail.com") khalilkode@gmail.com
         form(action="http://localhost" method="POST").InputsBlock
-            label.RevealMe
-                input(name="name", type="text", placeholder="your name") 
-            label.RevealMe
-                input(name="e-mail", type="email", placeholder="your e-mail")
-            label.RevealMe
-                input(name="subject", type="text", placeholder="your subject") 
-            label.RevealMe
-                input(name="company name", type="text", placeholder="your company name") 
-            textarea.RevealMe.InputsTextarea(name="message", rows="5", placeholder="write your message")
+            .RevealMe
+                label
+                    input(name="name", type="text", placeholder="your name") 
+                label
+                    input(name="e-mail", type="email", placeholder="your e-mail")
+                label
+                    input(name="subject", type="text", placeholder="your subject") 
+                label
+                    input(name="company name", type="text", placeholder="your company name") 
+                textarea.InputsTextarea(name="message", rows="5", placeholder="write your message")
             .SendMessageBlock.d-flex.RevealMe
                 input.SendMessage(type="submit" name="messagesend" value="send message")
                 span *We'll reply as soon as possible. We dont reply on Mondays.

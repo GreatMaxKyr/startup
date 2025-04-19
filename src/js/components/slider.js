@@ -347,32 +347,20 @@ myBrandSlider.init(".Partners-images",".Partners-images img")
 
 let quotes = [
     {
-        person: "Steve Jobs",
-        text: "Your work is a large part of your life, and the only way to be truly satisfied is to use creative tools that reflect your vision. This creative agency template company redefines what it means to build great projects. If you haven’t found the right way to express your ideas yet, keep exploring. Don’t settle for less—this is the solution to bring your work to life."
+        person: "Lena Hartley.",
+        text: "Startup transformed our online identity with a beautifully crafted template. Their attention to detail and design flexibility made our brand stand out instantly."
     },{
-        person: "Jeff Bezos",
-        text: "A brand for a company is like a reputation for a person. This creative agency template platform helps you establish a strong brand by giving you tools to create with precision and quality. It's what clients remember when you're not in the room and what they trust to deliver professional results time and again."
+        person: "Damon Kells.",
+        text: "Partnering with Startup was a total game changer. Their Creative Agency Template gave our team the professional edge we were missing. Smooth, stunning, and super intuitive."
     },{
-        person: "Sergey Brin",
-        text: "We strive to define what it means to be a force for good—always choosing the ethical path. This creative agency template company lives by this principle, providing solutions that enable businesses to create stunning and ethical designs. It's not just about templates; it's about empowering creativity in a way that truly makes a difference."
+        person: "Nina Veroux.",
+        text: "Startup’s template is visually brilliant and functionally solid. It gave our messaging clarity and style—exactly what we needed to connect with our audience confidently."
     },{
-        person: "Indra Nooyi",
-        text: "Never assume you've arrived. Even as a top creative, you must keep refining your approach. This creative agency template company is designed for leaders who are constantly evolving. It offers a fresh perspective, allowing you to challenge your creative thinking and stay ahead in an ever-changing market."
+        person: "Jamal Reeves.",
+        text: "The partnership with Startup exceeded expectations. Their Creative Agency Template brought our content to life and gave us a fresh, innovative platform to grow from. "
     },{
-        person: "Richard Branson",
-        text: "Branding is about commitment—reinventing continuously, connecting emotionally with clients, and fostering imagination. This creative agency template company isn’t just about templates; it’s about creating experiences that resonate. Their offerings inspire belief, persistence, and the courage to craft something truly meaningful."
-    },{
-        person: "Григорій Сковорода",
-        text: "Всякому місту свій нрав і права. Кожен проект має свій стиль і характер. Ця компанія шаблонів для креативних агентств дозволяє поєднати унікальність і професіоналізм, щоб кожен проект був витвором мистецтва."
-    },{
-        person: "Тарас Шевченко",
-        text: "Садок вишневий коло хати, вечірня зіронька стає. А ці шаблони для креативних агентств, як зорі вечірні, додають краси кожному проекту. Вони допомагають створювати ідеї, які захоплюють і надихають."
-    },{
-        person: "Леся Українка",
-        text: "Ні, я хочу крізь сльози сміятись, серед лиха співати пісні. Ця компанія шаблонів для креативних агентств дає змогу творити, незважаючи на будь-які труднощі. Це натхнення, стиль і потужний поштовх до нових вершин."
-    },{
-        person: "Володимир Зеленський",
-        text: "Вийди отсюда робійник! Але якщо створюєш креативні проекти, зайди і скористайся цими шаблонами для агентств. Вони зручні, красиві, і допоможуть виглядати професійно. Це шлях до ідеальних презентацій і результатів!"
+        person: "Kiera Solen.",
+        text: "The partnership with Startup exceeded expectations. Their Creative Agency Template brought our content to life and gave us a fresh, innovative platform to grow from."
     }
 ]
 

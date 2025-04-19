@@ -22,9 +22,9 @@ body
     backdrop-filter: invert(1)
 
 .RevealMe
-    opacity: 0.33
+    opacity: 0.25
     filter: blur(10px)
-    transition: all 1s ease-out forwards
+    transition: all 0.5s ease-in-out
 
 .Revealed
     opacity: 1
@@ -179,25 +179,25 @@ body
 
 .CoolA
     text-decoration: none
-    padding: 22px 50px
-    font-size: 16rem
+    padding: 20px 40px
+    font-size: 20rem
     border: 2px solid #fff
     color: #fff
     text-transform: uppercase
     background-color: transparent
-    font-weight: 600
+    font-weight: 400
 
     &:hover
         background-color: #fff
         color: #000
 
 h3
-    font-size: 20rem
+    font-size: 22rem
     text-transform: uppercase
-    font-weight: 800
+    font-weight: 600
     text-align: center
     position: relative
-    margin-bottom: 38rem
+    margin-bottom: 60px
     margin-top: 0
 
     &::before
@@ -207,13 +207,13 @@ h3
         position: absolute
         width: 70px
         height: 2px
-        top: 43rem
+        top: 55px
         left: 50%
         transform: translateX(-35px)
 
 .UnderH
     font-family: "Roboto Slab"
-    font-size: 16rem
+    font-size: 18rem
     text-align: center
     padding: 0 15%
     +media(550)
@@ -222,7 +222,7 @@ h3
 .ServicesBlock
     padding: 100px 0 60px
     +media(1400)
-        padding: 100px 0 200px
+        padding: 120px 0 130px
 
     .ServiceCards
         padding: 100px 20% 0
@@ -285,7 +285,7 @@ h3
                     max-width: 500px
 
 .works
-    padding: 140rem 0
+    padding: 115rem 0
     margin: 0 auto
 
     .WorkLinks
@@ -398,7 +398,7 @@ h3
                 transition: .5s ease
 
 .GetInTouch
-    padding: 160px 0 175px
+    padding: 125px 0
     text-align: center
     background-image: url(../img/TalkPic.png)
     background-size: cover
@@ -407,34 +407,32 @@ h3
     font-family: "Roboto Slab"
 
     p
-        line-height: 35px
-        padding: 0 10px
-        font-size: 30rem
+        padding-bottom: 10px
+        line-height: 40px
+        font-size: 20rem
         +media(375)
             font-size: 35rem
         +media(450)
-            font-size: 40rem
+            font-size: 37rem
 
-    .PAMargin
-        margin: 0 0 90px
-        +media(550)
-            margin: 25px 0 90px
+        &:nth-child(2)
+            padding-bottom: 50px
 
 .BlogPosts
     padding: 80px 20px
     +media(550)
-        padding: 150px 10%
+        padding: 110px 14%
 
     .PostsBlock
-        padding-top: 100px
+        padding-top: 80px
 
         .FirstPost
             padding-bottom: 15px
             margin-bottom: 30px
             border-bottom: 1px solid #ddd
             +media(1300)
-                padding-bottom: 55px
-                margin-bottom: 65px
+                padding-bottom: 10px
+                margin-bottom: 50px
 
         .posts
             display: flex
@@ -469,7 +467,6 @@ h3
                     padding: 0 0 110px 60px
 
                 .BlogBlock
-
                     h5
                         display: inline-block
                         border: 2px solid #000
@@ -484,13 +481,12 @@ h3
                     div
                         display: inline-block
                         transition: 1s ease all
-                        margin-left: 20px
-                        +media(550)
-                            margin-left: 50px
+                        padding: 10px 0
+                        margin-left: 30px
 
                         h4,p
                             font-size: 16rem
-                            +media(550)
+                            +media(635)
                                 font-size: 20rem
 
                         p
@@ -501,11 +497,12 @@ h3
                     font-family: "Roboto Slab"
 
                     p
-                        font-size: 18rem
+                        font-size: 16rem
+                        line-height: 26px
                         color: #555
                         padding: 30px 0 30px
                         +media(550)
-                            padding: 30px 0 70px
+                            padding: 20px 0 40px
 
                     a
                         font-size: 16rem
@@ -523,8 +520,7 @@ h3
                     text-decoration: underline
 
 .Partners
-    // transition: height 1s ease-in-out
-    padding: 170px 0
+    padding: 100px 
     background-color: #f8f8f8
     &-images
         overflow: hidden
@@ -548,6 +544,7 @@ h3
         // height: 60px
 
     img
+        padding: 0 15px
         display: inline-block
         transition: all 0.5s ease-in-out
         width: 150px
@@ -559,17 +556,17 @@ h3
         //     padding: 0 20px
 
     p
-        font-size: 18rem
+        font-size: 20rem
         color: #555
         font-weight: 400
-        line-height: 20px
+        line-height: 30px
         font-family: "Roboto Slab"
         font-style: italic
         text-align: center
 
     .QuoteAuthor
         margin: 40px 0 50px
-        font-size: 19rem
+        font-size: 25rem
         font-style: normal
 
     .dots
