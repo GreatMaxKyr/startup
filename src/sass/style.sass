@@ -205,11 +205,11 @@ h3
         z-index: 4
         background-color: #555
         position: absolute
-        width: 70px
-        height: 2px
+        width: 60px
+        height: 3px
         top: 55px
         left: 50%
-        transform: translateX(-35px)
+        transform: translateX(-50%)
 
 .UnderH
     font-family: "Roboto Slab"
@@ -596,8 +596,8 @@ h3
 
 .Touch
     padding: 120px 0 0
-    +media(768)
-        padding: 120px 0 170px
+    +media(770)
+        padding: 120px 0 20px
 
     .TouchBlock
         padding: 60px 15%
@@ -661,7 +661,7 @@ h3
                 max-height: 80px
                 margin-top: 30px
                 +media(770)
-                    margin: 20px 30px
+                    margin: 15px 20px
                 +media(1024)
                     flex-wrap: nowrap
                     width: 220px
@@ -669,10 +669,8 @@ h3
             span
                 font-size: 14rem
                 text-align: left
-                margin-top: 10px
                 +media(770)
-                    margin-top: 45px
-                    margin-left: 40px
+                    padding: 15px 20px
 
         label
             width: 100%
@@ -680,8 +678,8 @@ h3
             position: relative
             margin: 10px 0
             +media(770)
-                margin: 20px 30px
-                width: calc( 50% - 60px )
+                margin: 15px 20px
+                width: calc( 50% - 40px )
 
         input,
         textarea
@@ -689,18 +687,15 @@ h3
             display: inline-block
             outline: none
             font-family: "Roboto Slab"
-            font-size: 16rem
+            font-size: 14rem
             text-transform: uppercase
             box-sizing: border-box
             background-color: transparent
             width: 100%
-            padding: 20px 15px
-            +media(770)
-                padding: 25px 35px
+            padding: 15px 20px
 
             &:focus
-                border: 1px solid #a02616
-                background-color: transparentize(#a02616, 0.98)
+                border: 1.5px solid #c0301c
 
         .errortext
             position: absolute
@@ -716,5 +711,5 @@ h3
             width: 100%
             margin: 10px 0
             +media(770)
-                margin: 20px 30px
-                width: calc( 100% - 60px )
+                margin: 15px 20px
+                width: calc( 100% - 40px )
