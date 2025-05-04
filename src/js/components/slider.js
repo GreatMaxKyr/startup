@@ -84,9 +84,6 @@ class Slider {
         this.sliderWidth = this.slider.getBoundingClientRect().width //get full width of card parent
         
         this.visibleCardsCount = Math.floor(this.sliderWidth / (this.cardWidth + 10)) // how many cards visible
-
-        // console.log(this.visibleCardsCount, "👷visible c")
-        // console.log(this.totalCardCount, "😔 totalCardCount")
         
         if (this.visibleCardsCount > 1) { 
             if (this.sliderWidth > (this.cardWidth + 10) * this.slides.length) {  //if they all fit
@@ -102,8 +99,6 @@ class Slider {
                 }
             } else {
                 this.cardWidth = (this.sliderWidth - this.MaxCardDistance * (this.visibleCardsCount - 1)) / this.visibleCardsCount
-                // console.log(this.cardWidth, "⚠️cardWidth")        
-                // this.sliderCardDistance = ((this.sliderWidth - (this.cardWidth * this.visibleCardsCount)) / (this.visibleCardsCount)) 
             }
         } else { //only one card is visible, fully works dot touch
             this.sliderCardDistance = 50
@@ -207,6 +202,7 @@ class Slider {
         }, 100);
     }
     
+    //same thing but for right movement
     slideCardsRight() {
         let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
         PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance)}px`
@@ -226,7 +222,7 @@ class Slider {
 
 
 
-
+// all the code for the arrow buttons
 class Carousel extends Slider {
     isclicked = true
 
@@ -238,9 +234,9 @@ class Carousel extends Slider {
                 this.isclicked = false
 
                 if (this.visibleCardsCount > 2) {
-                    this.slide3cardsleft() //+
+                    this.slide3cardsleft()
                 } else {
-                    this.slideLeft() //+
+                    this.slideLeft()
                 }
                 
                 setTimeout(() => {
@@ -259,9 +255,9 @@ class Carousel extends Slider {
                 this.isclicked = false
 
                 if (this.visibleCardsCount > 2) {
-                    this.slide3cards() //+
+                    this.slide3cards()
                 } else {
-                    this.slideRight() //+
+                    this.slideRight()
                 }
                 
                 setTimeout(() => {
@@ -271,15 +267,6 @@ class Carousel extends Slider {
             }
         }
     }
-
-
-    // slideLeft(ShiftNumber) {
-    //     for (let i = 0; i < ShiftNumber; i++) {
-    //         setTimeout(() => {
-    //             this.slideCards()
-    //         }, 110 * i);
-    //     }
-    // }
 
     slideLeft() {
         setTimeout(() => {
@@ -291,6 +278,15 @@ class Carousel extends Slider {
             this.slideCardsRight();
         }, 110)
     }
+    
+
+    // slideLeft(ShiftNumber) {
+    //     for (let i = 0; i < ShiftNumber; i++) {
+    //         setTimeout(() => {
+    //             this.slideCards()
+    //         }, 110 * i);
+    //     }
+    // }
 }
 
 class BrandSlider extends Slider {
@@ -315,6 +311,7 @@ class BrandSlider extends Slider {
     }
     
     trigger() {
+        //make dots swap colours
         this.dotElement[this.activeDot].classList.remove("activeDot")
         this.activeDot = (this.activeDot == this.dotElement.length-1)?0:++this.activeDot
         this.dotElement[this.activeDot].classList.add("activeDot")
@@ -322,24 +319,40 @@ class BrandSlider extends Slider {
         this.activeQuote = (this.activeQuote == this.quoteContainer.length-1)?0:++this.activeQuote
         this.QuoteText.innerText = this.quoteContainer[this.activeQuote].text
         this.QuoteAuthor.innerText = this.quoteContainer[this.activeQuote].person
+
+        // give functionallity to dots
+        this.isDotClicked = true
+        this.dotElement.forEach((dot, i) => {
+            dot.onclick = () => {
+                this.dotElement[this.activeDot].classList.remove("activeDot")
+                this.activeDot = i
+                this.dotElement[this.activeDot].classList.add("activeDot")
+                
+                this.activeQuote = i
+                this.QuoteText.innerText = this.quoteContainer[this.activeQuote].text
+                this.QuoteAuthor.innerText = this.quoteContainer[this.activeQuote].person
+                
+                if (this.isDotClicked) {
+                    this.stopShift()
+                    this.isDotClicked = false
+                    setTimeout(() => {
+                        this.runShift()
+                    }, 5000)
+                }
+            }
+        })
     }
 }
 
 // Initialize the slider
-// let mySlider = new Slider(5000);
 let mySLider = new Carousel(5000);
 mySLider.setLeftButton(".slideLeft")
 mySLider.setRightButton(".slideRight")
-mySLider.setResizeRuleByGap(false)
 mySLider.init(".AboutPhotos", ".AboutPhotosPeopleBlocks");
 
 
 
-// function screenSize() {
-//     if (window.innerWidth <= 1300) {
-//     }
-// }
-let myBrandSlider = new BrandSlider(3000)
+let myBrandSlider = new BrandSlider(5000)
 myBrandSlider.setDots(".dot-selection")
 myBrandSlider.init(".Partners-images",".Partners-images img")
 

@@ -1,6 +1,7 @@
+//---=== HEADER STYLES ===---
 .hamburger
     display: block
-    +media(1200)
+    +media(760)
         display: none
 
 .HeaderLinks 
@@ -8,29 +9,33 @@
     position: fixed
     justify-content: space-between
     color: #fff
-    padding: 50px 10%
     width: 100%
     z-index: 6
     align-items: center
     display: flex
     flex-direction: row
     flex-wrap: wrap
+    padding: 50px 10%
+    +media(760)
+        padding: 50px 5%
+    +media(950)
+        padding: 50px 10%
 
     h2
-        font-size: 26px
+        font-size: 24rem
         font-weight: 700
 
     .HeaderLinksMenu
         margin: 10px 0
         padding: 20px 0
         border-top: 3px solid rgba(255, 255, 255, 0.15)
-        text-align: center
+        text-align: left
         display: none
         width: 100%
         overflow-x: scroll
         &::-webkit-scrollbar 
             display: none
-        +media(1200)
+        +media(760)
             width: 80%
             border: none
             padding: 0
@@ -42,10 +47,14 @@
     a
         text-decoration: none
         color: #fff
-        font-size: 20rem
+        font-size: 16rem
         padding-right: 35px
         &:last-child
             padding-right: 0
+        +media(760)
+            padding-right: 25px
+        +media(950)
+            padding-right: 35px
 
 .ImageContainerHeader
     background: url("../img/RedWall.png") center center / cover repeat-x
@@ -54,8 +63,12 @@
     text-align: center
 
     h1
-        font-size: 48rem
+        font-size: 45rem
+        +media(900)
+            font-size: 60rem
     
     p
         padding: 10px 0 95px
-        font-size: 30rem
+        font-size: 20rem
+        +media(900)
+            font-size: 25rem

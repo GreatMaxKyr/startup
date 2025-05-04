@@ -1,3 +1,76 @@
+//---=== SERVICES STYLES ===---
+.ServicesBlock
+    padding: 100px 0 60px
+    +media(1400)
+        padding: 120px 0
+
+    .ServiceCards
+        flex-wrap: wrap
+        padding: 100px 15% 0
+        +media(1000)
+            padding: 100px 0 0
+        +media(1024)
+            flex-wrap: nowrap
+        +media(1350)
+            padding: 100px 5% 0
+        +media(1500)
+            padding: 100px 10% 0
+
+        .card
+            border: none
+            padding-bottom: 100px
+            +media(1400)
+                padding-bottom: 0
+
+            .IconFrame
+                width: 100rem
+                height: 100rem
+                border-radius: 50%
+                border: 2px solid #ccc
+                margin: 0 50%
+                transform: translateX(-50rem)
+
+            .filledFrame,
+            .SolidIcon,
+            .SupportIcon
+                background-repeat: no-repeat
+                background-position: center
+                background-size: 55rem
+
+            .filledFrame
+                background-size: 45rem
+                background-color: #c0301c
+                background-image: url(../img/fa-font.png)
+
+            .SolidIcon
+                background-image: url(../img/fa-code.png)
+
+            .SupportIcon
+                background-image: url(../img/fa-support.png)
+
+            .card-body
+                font-family: "Roboto Slab"
+                text-align: center
+                color: #555
+                padding: 0 3%
+                +media(1585)
+                    padding: 0 5%
+
+                h5
+                    font-family: "Montserrat", sans-serif
+                    font-weight: 500
+                    padding: 20px 0
+                    font-size: 17rem
+                    text-transform: uppercase
+
+                p
+                    font-size: 15.5rem
+                    font-family: "Roboto Slab"
+                    max-width: 500px
+                    line-height: 28rem
+
+
+//---=== ABOUT US STYLES ===---
 .AboutUsBlock
     background-color: #f8f8f8
     padding: 115rem 10% 0
@@ -26,7 +99,7 @@
                 margin-left: 50px
 
     .AboutPhotos
-        padding: 90px 0 150px
+        padding: 30px 0 150px
         text-align: center
         flex-wrap: nowrap
         box-sizing: border-box
@@ -35,25 +108,16 @@
 
         .slideLeft,.slideRight
             position: absolute
-            width: 45rem
-            height: 45rem
             z-index: 5
-            transition: transform 0.2s ease, background-color 0.2s ease
-            top: 50%
+            top: 38%
             transform: translate(0, calc(-50% - 30px))
             +media(750)
                 transform: translate(0, -50%)
             +media(950)
                 transform: translate(0, calc(-50% - 30px))
 
-        .slideLeft path,.slideRight path
-            transform: translate(-2px,-2px)
-            +media(450)
-                transform: translate(0,0)
-
         .slideLeft
             left: 0
-
         .slideRight
             right: 0
 
@@ -61,8 +125,6 @@
             transition: all 0.5s ease-in-out
             display: inline-block
             text-align: center
-            // position: absolute
-            opacity: 1
             z-index: 3
             aspect-ratio: 1 / 1
             width: 320px
@@ -91,8 +153,13 @@
                     backdrop-filter: blur(5px)
                     padding: 20px
 
-                    a
+                    svg
                         padding: 5px
+                        width: calc( 25% - 10px )
+                        transition: all 0.25s ease-in-out
+
+                        &:hover
+                            transform: scale(1.2)
 
                 img
                     width: 100%
@@ -111,3 +178,442 @@
                 font-size: 19rem
                 +media(468)
                     font-size: 16rem
+
+
+//---=== WORKS IMAGES STYLES ===---
+.works
+    padding: 115rem 0 90rem
+    margin: 0 auto
+
+    .WorkLinks
+        padding-bottom: 65rem
+        white-space: nowrap
+        overflow-x: scroll
+        &::-webkit-scrollbar
+            display: none
+
+        a
+            text-decoration: none
+            color: #555
+            padding: 15px
+
+            &:hover
+                color: #464545
+
+        .SelectedFilter
+            font-weight: 600
+            color: #c0301c
+            text-decoration: underline
+
+            &:hover
+                color: #a92918
+
+    .WorkPicturesBlock
+        margin: 0 auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        // width: min-content
+        +media(1030)
+            width: 90%
+        +media(1280)
+            width: 75%
+
+        .WorkPicturesContainer
+            position: relative
+            aspect-ratio: 360 / 320
+            margin: 1.5%
+            width: 44%
+            +media(768)
+                width: 30%
+            +media(1030)
+                margin: 16rem
+
+            &:hover
+                background-color: #c0301c
+
+            &:hover .WorkPictures
+                opacity: 0.3
+
+            &:hover .middle
+                opacity: 1
+
+            .middle
+                transition: .5s ease
+                opacity: 0
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                color: #fff
+                text-align: center
+
+                a
+                    text-transform: uppercase
+                    color: transparentize(#c0301c, 0.1)
+                    font-size: 14rem
+                    text-decoration: none
+                    padding: 10px 35px 10px 20px
+                    font-weight: 600
+                    background-color: #fff
+                    font-family: "Roboto Slab"
+                    position: relative
+
+                    &::before,
+                    &::after
+                        content: ""
+                        position: absolute
+                        width: 6.5px
+                        height: 2.4px
+                        background-color: transparentize(#c0301c, 0.1)
+                        right: 20px
+                        top: 16.5px
+
+                    &::before
+                        transform: rotate(45deg)
+
+                    &::after
+                        transform: rotate(-45deg)
+                        top: 20.5px
+
+                p
+                    margin-bottom: 40px
+                    font-size: 14rem
+
+                    &:first-child
+                        font-size: 18rem
+                        margin-bottom: 20px
+                        font-weight: 600
+
+            .WorkPictures
+                object-fit: cover
+                opacity: 1
+                display: block
+                width: 100%
+                height: 100%
+                transition: .5s ease
+
+
+//---=== LET'S TALK STYLES ===---
+.GetInTouch
+    padding: 140rem 0
+    text-align: center
+    background-image: url(../img/TalkPic.png)
+    background-size: 2000px
+    background-repeat: no-repeat
+    color: #fff
+    font-family: "Roboto Slab"
+
+    p
+        padding-bottom: 10px
+        line-height: 40px
+        font-size: 20rem
+        +media(375)
+            font-size: 35rem
+        +media(450)
+            font-size: 37rem
+
+        &:nth-child(2)
+            padding-bottom: 50px
+
+.BlogPosts
+    padding: 80px 20px
+    +media(550)
+        padding: 110px 14% 90px
+
+    .PostsBlock
+        padding-top: 80px
+
+        .FirstPost
+            padding-bottom: 15px
+            margin-bottom: 30px
+            border-bottom: 1px solid #ddd
+            +media(1300)
+                padding-bottom: 10px
+                margin-bottom: 50px
+
+        .posts
+            display: flex
+            flex-direction: column
+            +media(1300)
+                flex-direction: row
+
+            .BlockRight
+                width: 100%
+                +media(1300)
+                    width: 40%
+
+            img
+                width: 100%
+                object-fit: cover
+                object-position: right center
+                aspect-ratio: 5 / 4
+                margin: 40px 0
+                +media(480)
+                    margin: 60px 0
+                    aspect-ratio: 5 / 2
+                +media(1300)
+                    aspect-ratio: 3 / 2
+                    margin: 0
+
+            .BlockLeft
+                text-align: left
+                padding: 0 0 50px
+                width: 100%
+                +media(1300)
+                    width: 60%
+                    padding: 0 0 110px 60px
+
+                .BlogBlock
+                    h5
+                        display: inline-block
+                        border: 2px solid #000
+                        font-size: 24rem
+                        letter-spacing: 2px
+                        text-transform: uppercase
+                        color: #777
+                        text-align: center
+                        padding: 15px
+                        width: 90px
+
+                    div
+                        display: inline-block
+                        transition: 1s ease all
+                        padding: 10px 0
+                        margin-left: 30px
+
+                        h4,p
+                            font-size: 16rem
+                            +media(635)
+                                font-size: 20rem
+
+                        p
+                            font-style: italic
+                            padding-top: 10px
+
+                .BlogBlockText
+                    font-family: "Roboto Slab"
+
+                    p
+                        font-size: 16rem
+                        line-height: 26px
+                        color: #555
+                        padding: 30px 0 30px
+                        +media(550)
+                            padding: 20px 0 40px
+
+                    a
+                        font-size: 16rem
+                        text-decoration: none
+                        color: #777
+                        font-weight: 800
+
+        .posts:hover
+            .BlogBlock
+                p,h4
+                    color: #c0301c
+            .BlogBlockText
+                a
+                    color: #c0301c
+                    text-decoration: underline
+
+
+//---=== PARTNERS STYLES ===---
+.Partners
+    padding: 120px 10%
+    background-color: #f8f8f8
+    &-images
+        overflow: hidden
+
+    div
+        margin: 0 auto
+        width: 85%
+
+    .Partners-text
+        padding: 20px 0 0
+        width: 100%
+        max-width: 500px
+
+    img
+        display: inline-block
+        transition: all 0.5s ease-in-out
+        width: 150px
+        object-fit: contain
+        // padding: 0 15px
+        // height: 60px
+        // margin: 0 50px
+        // +media(1300)
+        //     margin: 0
+        //     padding: 0 20px
+
+    p
+        font-size: 20rem
+        color: #555
+        font-weight: 400
+        line-height: 30px
+        font-family: "Roboto Slab"
+        font-style: italic
+        text-align: center
+
+    .QuoteAuthor
+        margin: 40px 0 50px
+        font-size: 25rem
+        font-style: normal
+
+    .dots
+        width: 120px
+        +media(430)
+            width: 160px
+
+        .dot-selection
+            transition: all 0.3s ease-in-out
+            border-radius: 50%
+            border: 1px solid #bdbdbd
+            background-color: #ddd
+            width: 12px
+            height: 12px
+            +media(430)
+                width: 17rem
+                height: 17rem
+
+            &:hover
+                background-color: #cacaca
+
+        .activeDot
+            border: 1px solid #a02616
+            background-color: #c0301c
+            &:hover
+                background-color: #a82716
+
+
+//---=== GET IN TOUCH STYLES ===---
+.Touch
+    padding: 120px 0 0
+    +media(770)
+        padding: 120px 0 40px
+
+    .TouchBlock
+        padding: 60px 15%
+        vertical-align: top
+        display: flex
+        flex-direction: column
+        +media(1320)
+            flex-direction: row
+
+    .PersonalInfoBlock
+        padding-top: 45px
+        text-align: left
+        display: inline-block
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        width: 100%
+        justify-content: space-between
+        +media(1320)
+            width: 30%
+            justify-content: flex-start
+            flex-direction: column
+
+        div
+            width: 300px
+            font-family: "Roboto Slab"
+            margin-bottom: 30px
+            font-size: 16rem
+
+            svg
+                margin-right: 30px
+
+            p
+                font-weight: 700
+                margin-bottom: 5px
+                display: inline-block
+
+            a
+                padding-left: 50px
+                color: #222
+                text-decoration: none
+                display: block
+
+    .InputsBlock
+        text-align: left
+        display: inline-block
+        width: 100%
+        +media(1320)
+            width: 70%
+            padding-left: 40px
+
+        .SendMessageBlock
+            justify-content: center
+            flex-wrap: wrap
+            +media(1024)
+                flex-wrap: nowrap
+                justify-content: start
+
+            .SendMessage
+                min-width: 220px
+                max-width: 360px
+                max-height: 80px
+                margin-top: 30px
+                +media(770)
+                    margin: 15px 20px
+                +media(1024)
+                    flex-wrap: nowrap
+                    width: 220px
+            
+            div
+                padding: 30px 0
+
+                span
+                    font-size: 14rem
+                    text-align: left
+                    white-space: nowrap
+                    +media(770)
+                        padding: 30px 0
+                    
+                .spastar
+                    color: #c0301c
+                    font-size: 16rem
+                    padding: 0 5px
+                    
+
+        label
+            width: 100%
+            border: none
+            position: relative
+            margin: 10px 0
+            +media(770)
+                margin: 15px 20px
+                width: calc( 50% - 40px )
+
+        input,
+        textarea
+            border: 1.5px solid #555
+            display: inline-block
+            outline: none
+            font-family: "Roboto Slab"
+            font-size: 14rem
+            text-transform: uppercase
+            box-sizing: border-box
+            background-color: transparent
+            width: 100%
+            padding: 15px 20px
+
+            &:focus
+                border: 1.5px solid #c0301c
+
+        .errortext
+            position: absolute
+            left: 10px
+            color: red
+            font-size: 15px
+            top: -5px
+            +media(770)
+                top: -25px
+
+        textarea
+            overflow-y: scroll
+            width: 100%
+            margin: 10px 0
+            +media(770)
+                margin: 15px 20px
+                width: calc( 100% - 40px )

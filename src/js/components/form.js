@@ -11,39 +11,24 @@ let TouchBlock = document.querySelector(".Touch")
 let toast = document.querySelector('.toast-container')
 let MessageOutPut = document.querySelector('.MessageOutPut')
 
-inputsFeed.forEach(input => {
+inputsFeed.forEach(input => { //load information
     if (localStorage.getItem(input.name) != null) {
         input.value = localStorage.getItem(input.name)    
         InputsTextarea.value = localStorage.getItem(InputsTextarea.name)    
     }
 })
 
+//---=== VALIDATE FIELDS ===---
 function validateFields() {
     let trig = true
 
     inputsFeed.forEach(element => {
-        let pattern = /^([A-Za-zА-Яа-я0-9 -!]+)$/gi
+        let pattern = /^([A-Za-zА-Яа-я0-9 -!]+)$/gi //set the pattern
         if(element.name =="e-mail"){
             pattern = /(\w+)@(\w+)\.(\w+)/gi
-
-            // if (!pattern.test(element.value)){
-            //     element.focus();
-
-            //     let errorMessage = document.createElement("p")
-            //     errorMessage.classList.add("errortext")
-            //     errorMessage.innerText = "Invalid email" 
-            //     element.insertAdjacentElement("beforebegin", errorMessage)
-            //     element.style.position = "relative"
-
-            //     trig = false
-            // } else {
-            //     if (element.previousElementSibling) {
-            //         element.previousElementSibling.remove()
-            //     }
-            // }
         }
 
-        if (!pattern.test(element.value)){
+        if (!pattern.test(element.value)){ //test for pattern and output error message
             element.focus();
 
             let errorMessage = document.createElement("p")
@@ -65,6 +50,7 @@ function validateFields() {
     return trig
 }
 
+//---=== LOAD INFO & SEND CONFIRM & TOAST POP UP ===---
 SendMessage.onclick = (event) => {
     event.preventDefault()
     if (validateFields()) {
@@ -79,8 +65,6 @@ SendMessage.onclick = (event) => {
         InputPopup.style.display = 'block'
         body.style.overflowY = 'hidden'
         InputPopup.style.background = 'rgba(0, 0, 0, 0.5)'
-        // InputPopup.style.backdropFilter = 'blur(5px)'
-        // InputPopup.style.webkitBackdropFilter = 'blur(5px)'
         TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
         let ConfirmBlock = document.querySelector(".ConfirmBlock")
@@ -95,7 +79,7 @@ SendMessage.onclick = (event) => {
 
         let confirmMessageTextArea = document.createElement("p")
 
-        let ConfirmStrong = document.createElement("strong")
+        let ConfirmStrong = document.createElement("strong") //creating text to confirm information you put in
         ConfirmStrong.innerText = "message: "
 
         let TextAreaSeeMore = document.createElement("a")
@@ -117,7 +101,7 @@ SendMessage.onclick = (event) => {
                 TextAreaSeeMore.onclick = function(elem)  {
                     elem.preventDefault()
                     
-                    if (TextAreaSeeMore.isopened == false) {
+                    if (TextAreaSeeMore.isopened == false) { //see more code
                         confirmMessageTextArea.innerText = InputsTextarea.value.substring(0, 100)
                         TextAreaSeeMore.innerText = " ... show more"
                         TextAreaSeeMore.style.color = "#0D6EFD"
@@ -137,7 +121,7 @@ SendMessage.onclick = (event) => {
     }
 }
 
-document.querySelector(".DoYouGetInTouch").onclick = () => {
+document.querySelector(".DoYouGetInTouch").onclick = () => { //scroll to the input block
     TouchBlock.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
@@ -147,7 +131,7 @@ InputClose.onclick = () => {
 }
 
 
-
+//---=== SENDING EMAIL ===---
 EmailSendConfirm.onclick = (e) => {
     
     e.preventDefault()
@@ -155,14 +139,13 @@ EmailSendConfirm.onclick = (e) => {
     const url = "http://localhost" 
     let xhr = new XMLHttpRequest()  
     xhr.open("post", url, true)
-    // xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
     xhr.responseType = "multipart/form-data"
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== 4) return
         
         if (xhr.status !== 200) {
             MessageOutPut.innerText = "We have faced an error while sending your message, please try again later."
-            toast.classList.add("text-danger-emphasis","bg-danger-subtle","border","border-danger-subtle")
+            toast.classList.add("text-danger-emphasis","bg-danger-subtle","border","border-danger-subtle")  //styling for the outcome toast
         }
         else {
             MessageOutPut.innerText = "Your message has been succesfully sent!"
@@ -185,7 +168,7 @@ EmailSendConfirm.onclick = (e) => {
         toast.style.opacity = "100%"
         setTimeout(() => {
             toast.style.opacity = "0"
-            toast.classList.remove("text-danger-emphasis","bg-danger-subtle","text-info-emphasis","bg-info-subtle","border")
+            toast.classList.remove("text-danger-emphasis","bg-danger-subtle","text-info-emphasis","bg-info-subtle","border")  //styling for the outcome toast
         }, 100);
     }, 9000);
         

@@ -1,8 +1,5 @@
 let body = document.querySelector("body")
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
 //hack
 let HackTrigger = document.querySelector(".HackTrigger")
 
@@ -35,18 +32,4 @@ PostReadMore.forEach(ReadButton => {
     }
   }
 
-});
-
-
-
-// let partners = document.querySelector(".Partners")
-// function increasePadding() {
-//   let partnersHeight = partners.offsetHeight
-
-//   if (partnersHeight < 740) {
-//       let currentPadding = parseInt(window.getComputedStyle(partners).paddingBottom) || 0
-//       partners.style.paddingBottom = (currentPadding + 1) + "px"; 
-//       setTimeout(increasePadding, 10)
-//   }
-// }
-// increasePadding()
+})
