@@ -1,6 +1,6 @@
 let SendMessage = document.querySelector(".SendMessage")
 let InputsTextarea = document.querySelector(".InputsTextarea")
-let inputsFeed = document.querySelectorAll(".InputsBlock input")
+let inputsFeed = document.querySelectorAll(".InputsBlock label input")
 let InputPopup = document.querySelector(".InputPopup")
 let popupContent = document.querySelector(".popup-content")
 let InputClose = document.querySelector(".InputClose")

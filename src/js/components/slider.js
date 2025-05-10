@@ -49,10 +49,23 @@ class Slider {
             this.lasttouchX = event.touches[0].pageX
         }
         this.slider.ontouchend = (event) => {
-            if (this.touchX  >= this.lasttouchX) {
-                this.slideLeft(1)
-            } else {
-                this.slideRight(1)
+            if (this.isclicked) {
+                this.stopShift()
+                this.isclicked = false
+                setTimeout(() => {
+                    this.isclicked = true
+                    this.runShift()
+                }, 650)
+
+                if (this.touchX  >= this.lasttouchX) {
+                    if (this.touchX - this.lasttouchX >= 40) {
+                        this.slideCards()
+                    }
+                } else {
+                    if (this.touchX - this.lasttouchX <= -40) {
+                        this.slideCardsRight()
+                    }
+                }
             }
         }
     }
@@ -236,7 +249,7 @@ class Carousel extends Slider {
                 if (this.visibleCardsCount > 2) {
                     this.slide3cardsleft()
                 } else {
-                    this.slideLeft()
+                    this.slideCards()
                 }
                 
                 setTimeout(() => {
@@ -253,41 +266,24 @@ class Carousel extends Slider {
             if (this.isclicked) {
                 this.stopShift()
                 this.isclicked = false
-
-                if (this.visibleCardsCount > 2) {
-                    this.slide3cards()
-                } else {
-                    this.slideRight()
-                }
-                
                 setTimeout(() => {
                     this.isclicked = true
                     this.runShift()
                 }, 650)
+
+                if (this.visibleCardsCount > 2) {
+                    this.slide3cards() //works
+                } else {
+                    this.slideCardsRight()
+                }
+                // console.log(this.visibleCardsCount)
+                
             }
         }
     }
 
-    slideLeft() {
-        setTimeout(() => {
-            this.slideCards()
-        }, 110)
-    }
-    slideRight() {
-        setTimeout(() => {
-            this.slideCardsRight();
-        }, 110)
-    }
-    
-
-    // slideLeft(ShiftNumber) {
-    //     for (let i = 0; i < ShiftNumber; i++) {
-    //         setTimeout(() => {
-    //             this.slideCards()
-    //         }, 110 * i);
-    //     }
-    // }
 }
+
 
 class BrandSlider extends Slider {
     constructor(setTime) {
