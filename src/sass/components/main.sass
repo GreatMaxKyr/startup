@@ -128,13 +128,6 @@
             z-index: 3
             aspect-ratio: 1 / 1
             width: 320px
-            // width: 100%
-            // +media(450)
-            //     width: 260px
-            // +media(768)
-            //     width: 280px
-            // +media(1440)
-            //     width: 320px
 
             &:hover .AboutPhotosSocialBlock
                 display: block
@@ -154,12 +147,14 @@
                     padding: 20px
 
                     svg
-                        padding: 5px
-                        width: calc( 25% - 10px )
-                        transition: all 0.25s ease-in-out
+                        padding: 10px
+                        width: 25%
+                        transition: transform 0.25s ease-in-out
 
                         &:hover
-                            transform: scale(1.2)
+                            transform: scale(1.1)
+                            // background-color: #c0301c
+                            fill: #c0301c
 
                 img
                     width: 100%
@@ -477,6 +472,7 @@
                 height: 17rem
 
             &:hover
+                cursor: pointer
                 background-color: #cacaca
 
         .activeDot

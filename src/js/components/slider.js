@@ -68,6 +68,19 @@ class Slider {
                 }
             }
         }
+
+        // Pause on hover
+        this.slider.onmouseenter = () => {
+            this.stopShift()
+            this.isPausedByHover = true
+            console.log(this.isPausedByHover)
+        }
+
+        // Resume from the last point on mouse leave
+        this.slider.onmouseleave = () => {
+            this.isPausedByHover = false
+            this.runShift()
+        }
     }
 
     setDefaultCardWidth(defaultCardWidth){
@@ -247,15 +260,19 @@ class Carousel extends Slider {
                 this.isclicked = false
 
                 if (this.visibleCardsCount > 2) {
+                    // this.slide3cards()
                     this.slide3cardsleft()
                 } else {
+                    // this.slideCardsRight()
                     this.slideCards()
                 }
                 
-                setTimeout(() => {
-                    this.isclicked = true
-                    this.runShift()
-                }, 650)
+                if (!this.isPausedByHover) {
+                    setTimeout(() => {
+                        this.isclicked = true
+                        this.runShift()
+                    }, 650)
+                }
             }
         }
     }
@@ -272,12 +289,12 @@ class Carousel extends Slider {
                 }, 650)
 
                 if (this.visibleCardsCount > 2) {
-                    this.slide3cards() //works
+                    this.slide3cards()
+                    // this.slide3cardsleft()
                 } else {
+                    // this.slideCards()
                     this.slideCardsRight()
                 }
-                // console.log(this.visibleCardsCount)
-                
             }
         }
     }
