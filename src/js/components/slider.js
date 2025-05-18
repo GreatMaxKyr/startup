@@ -31,7 +31,6 @@ class Slider {
 
         let SliderHeight = this.slider.getBoundingClientRect().height + 40;
 
-
         this.slides.forEach(element => {
             element.style.position = "absolute"
         });
@@ -41,7 +40,7 @@ class Slider {
         
         this.slider.style.minHeight = SliderHeight + "px"
 
-
+        //on touch move 1 card
         this.slider.ontouchstart = (event) => {
             this.touchX = event.touches[0].pageX
         }
@@ -58,11 +57,11 @@ class Slider {
                 }, 650)
 
                 if (this.touchX  >= this.lasttouchX) {
-                    if (this.touchX - this.lasttouchX >= 40) {
+                    if (this.touchX - this.lasttouchX >= 50) {
                         this.slideCards()
                     }
                 } else {
-                    if (this.touchX - this.lasttouchX <= -40) {
+                    if (this.touchX - this.lasttouchX <= -50) {
                         this.slideCardsRight()
                     }
                 }
@@ -71,15 +70,11 @@ class Slider {
 
         // Pause on hover
         this.slider.onmouseenter = () => {
-            this.stopShift()
             this.isPausedByHover = true
-            console.log(this.isPausedByHover)
         }
-
         // Resume from the last point on mouse leave
         this.slider.onmouseleave = () => {
             this.isPausedByHover = false
-            this.runShift()
         }
     }
 
@@ -145,16 +140,19 @@ class Slider {
 
     runShift() {
         this.timer = setInterval(() => {
-            this.slideCards()
-            this.trigger()
+            if (!this.isPausedByHover) {
+                this.slideCards()
+                this.trigger()
+            }
         }, this.sliderInterval)
     }
-    runShiftRight() {
-        this.timer = setInterval(() => {
-            this.slideCardsRight()
-            this.trigger()
-        }, this.sliderInterval)
-    }
+
+    // runShiftRight() {
+    //     this.timer = setInterval(() => {
+    //         this.slideCardsRight()
+    //         this.trigger()
+    //     }, this.sliderInterval)
+    // }
 
     stopShift() {
         clearInterval(this.timer);
@@ -255,6 +253,9 @@ class Carousel extends Slider {
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
+            this.leftButton.style.filter = "invert(100%)"
+            setTimeout(() => {this.leftButton.style.filter = "invert(0%)"}, 1000);
+
             if (this.isclicked) {
                 this.stopShift()
                 this.isclicked = false
@@ -267,12 +268,10 @@ class Carousel extends Slider {
                     this.slideCards()
                 }
                 
-                if (!this.isPausedByHover) {
-                    setTimeout(() => {
-                        this.isclicked = true
-                        this.runShift()
-                    }, 650)
-                }
+                setTimeout(() => {
+                    this.isclicked = true
+                    this.runShift()
+                }, 650)
             }
         }
     }
@@ -280,13 +279,12 @@ class Carousel extends Slider {
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
+            this.rightButton.style.filter = "invert(100%)"
+            setTimeout(() => {this.rightButton.style.filter = "invert(0%)"}, 1000);
+
             if (this.isclicked) {
                 this.stopShift()
                 this.isclicked = false
-                setTimeout(() => {
-                    this.isclicked = true
-                    this.runShift()
-                }, 650)
 
                 if (this.visibleCardsCount > 2) {
                     this.slide3cards()
@@ -295,6 +293,11 @@ class Carousel extends Slider {
                     // this.slideCards()
                     this.slideCardsRight()
                 }
+            
+                setTimeout(() => {
+                    this.isclicked = true
+                    this.runShift()
+                }, 650)
             }
         }
     }

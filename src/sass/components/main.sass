@@ -143,18 +143,24 @@
                     bottom: 5%
                     width: 80%
                     border-radius: 10px
-                    backdrop-filter: blur(5px)
                     padding: 20px
+                    // backdrop-filter: blur(5px)
 
-                    svg
+                    a
+                        width: 20%
                         padding: 10px
-                        width: 25%
+                        display: inline-block
+                        text-align: center
                         transition: transform 0.25s ease-in-out
+
+                        svg
+                            aspect-ratio: 1/1
+                            background-position: center
 
                         &:hover
                             transform: scale(1.1)
-                            // background-color: #c0301c
-                            fill: #c0301c
+                            background-color: #c0301c
+                            // fill: #c0301c
 
                 img
                     width: 100%
