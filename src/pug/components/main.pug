@@ -202,16 +202,16 @@
         form(action="http://localhost" method="POST").InputsBlock
             .RevealMe
                 label
-                    input(name="name", type="text", placeholder="your name") 
+                    input.EmailFormInput(name="name", type="text", placeholder="your name") 
                 label
-                    input(name="e-mail", type="email", placeholder="your e-mail")
+                    input.EmailFormInput(name="e-mail", type="email", placeholder="your e-mail")
                 label
-                    input(name="subject", type="text", placeholder="your subject") 
+                    input.EmailFormInput(name="subject", type="text", placeholder="your subject") 
                 label
-                    input(name="company name", type="text", placeholder="your company name") 
-                textarea.InputsTextarea(name="message", rows="4", placeholder="write your message")
+                    input.EmailFormInput(name="company name", type="text", placeholder="your company name") 
+                textarea.InputsTextarea.EmailFormInput(name="message", rows="4", placeholder="write your message")
             .SendMessageBlock.d-flex.RevealMe
-                input.SendMessage(type="submit" name="messagesend" value="send message")
+                input.SendMessage(type="submit" name="messagesent" value="send message" placeholder="send message")
                 div
                     span.spastar *
                     span We'll reply as soon as possible. We dont reply on Mondays.

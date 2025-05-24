@@ -48,7 +48,7 @@ class Slider {
             this.lasttouchX = event.touches[0].pageX
         }
         this.slider.ontouchend = (event) => {
-            if (this.isclicked) {
+            if (this.isclicked && ((this.touchX - this.lasttouchX >= 50) || (this.touchX - this.lasttouchX <= -50))) {
                 this.stopShift()
                 this.isclicked = false
                 setTimeout(() => {
@@ -230,6 +230,7 @@ class Slider {
     slideCardsRight() {
         let PhantomSlide = this.slides[this.slides.length - 1].cloneNode(true)
         PhantomSlide.style.left = `-${(this.cardWidth + this.sliderCardDistance)}px`
+        // PhantomSlide.style.left = this.slider.getBoundingClientRect().width + this.sliderCardDistance + "px"
         this.slider.insertAdjacentElement('afterbegin', PhantomSlide)
         this.slides.unshift(PhantomSlide)
         
@@ -253,18 +254,16 @@ class Carousel extends Slider {
     setLeftButton(leftButton) {
         this.leftButton = document.querySelector(leftButton)
         this.leftButton.onclick = () => {
-            this.leftButton.style.filter = "invert(100%)"
-            setTimeout(() => {this.leftButton.style.filter = "invert(0%)"}, 1000);
+            this.leftButton.style.filter = "brightness(0.8)"
+            setTimeout(() => {this.leftButton.style.filter = "brightness(1)"}, 400)
 
             if (this.isclicked) {
                 this.stopShift()
                 this.isclicked = false
 
                 if (this.visibleCardsCount > 2) {
-                    // this.slide3cards()
                     this.slide3cardsleft()
                 } else {
-                    // this.slideCardsRight()
                     this.slideCards()
                 }
                 
@@ -275,12 +274,11 @@ class Carousel extends Slider {
             }
         }
     }
-    
     setRightButton(rightButton) {
         this.rightButton = document.querySelector(rightButton)
         this.rightButton.onclick = () => {
-            this.rightButton.style.filter = "invert(100%)"
-            setTimeout(() => {this.rightButton.style.filter = "invert(0%)"}, 1000);
+            this.rightButton.style.filter = "brightness(0.8)"
+            setTimeout(() => {this.rightButton.style.filter = "brightness(1)"}, 400)
 
             if (this.isclicked) {
                 this.stopShift()
@@ -288,9 +286,7 @@ class Carousel extends Slider {
 
                 if (this.visibleCardsCount > 2) {
                     this.slide3cards()
-                    // this.slide3cardsleft()
                 } else {
-                    // this.slideCards()
                     this.slideCardsRight()
                 }
             
@@ -301,7 +297,6 @@ class Carousel extends Slider {
             }
         }
     }
-
 }
 
 
@@ -395,6 +390,12 @@ let quotes = [
 
 myBrandSlider.setQuote(quotes)
 window.onresize = () => {
+    mySLider.setLayout() 
+    mySLider.setSlidePositionRight() 
+    myBrandSlider.setLayout()
+    myBrandSlider.setSlidePositionRight() 
+}
+window.onload = () => {
     mySLider.setLayout() 
     mySLider.setSlidePositionRight() 
     myBrandSlider.setLayout()

@@ -1,6 +1,8 @@
 let SendMessage = document.querySelector(".SendMessage")
+// SendMessage.value = "send message"
+
 let InputsTextarea = document.querySelector(".InputsTextarea")
-let inputsFeed = document.querySelectorAll(".InputsBlock label input")
+let inputsFeed = document.querySelectorAll(".EmailFormInput")
 let InputPopup = document.querySelector(".InputPopup")
 let popupContent = document.querySelector(".popup-content")
 let InputClose = document.querySelector(".InputClose")
@@ -29,7 +31,13 @@ function validateFields() {
         }
 
         if (!pattern.test(element.value)){ //test for pattern and output error message
-            element.focus();
+            //remove existing errors
+            const existingError = element.parentElement.querySelector(".errortext");
+            if (existingError) {
+                existingError.remove();
+            }
+
+            element.focus()
 
             let errorMessage = document.createElement("p")
             errorMessage.classList.add("errortext")
@@ -39,8 +47,10 @@ function validateFields() {
             element.style.position = "relative"
 
             trig = false
-        } else {
-            if (element.previousElementSibling) {
+        } 
+        else {
+            // element.style.marginTop = "0"
+            if (element.previousElementSibling && element.previousElementSibling.classList.contains("errortext")) {
                 element.previousElementSibling.remove()
             }
         }
